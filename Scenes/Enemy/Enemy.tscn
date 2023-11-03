@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxsft1bnlaypf"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy/Enemy.gd" id="1_sgd0a"]
+[ext_resource type="Script" path="res://Scenes/Enemy/EnemyIdle.gd" id="2_f6odf"]
+[ext_resource type="Script" path="res://Scenes/Enemy/StateMachine.gd" id="2_so16n"]
+[ext_resource type="Script" path="res://Scenes/Enemy/EnemyChase.gd" id="4_18nnc"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6xvf8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nh12v"]
+size = Vector2(10.1, 10)
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(10, 10)
+script = ExtResource("1_sgd0a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = SubResource("PlaceholderTexture2D_6xvf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.0499996, 1.90735e-07)
+shape = SubResource("RectangleShape2D_nh12v")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("2_so16n")
+initialState = NodePath("Chase")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("2_f6odf")
+enemy = NodePath("../..")
+
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_18nnc")
+enemy = NodePath("../..")

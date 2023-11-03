@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bffvn3ulcjrlc"]
+
+[ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_0kf8f"]
+[ext_resource type="Texture2D" uid="uid://db83ugra0srar" path="res://icon.svg" id="2_ajv2h"]
+[ext_resource type="PackedScene" uid="uid://b3h544mgpoegf" path="res://Scenes/Joystick/Joystick.tscn" id="3_w4dpy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nias7"]
+size = Vector2(6.4, 6.4)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("joystick") groups=["Player"]]
+position = Vector2(270, 480)
+scale = Vector2(10, 10)
+script = ExtResource("1_0kf8f")
+joystick = NodePath("Camera2D/Joystick")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ajv2h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nias7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="Joystick" parent="Camera2D" instance=ExtResource("3_w4dpy")]
+position = Vector2(0, 280)
+scale = Vector2(0.7, 0.7)

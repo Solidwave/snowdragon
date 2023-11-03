@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxsft1bnlaypf"]
+
+[ext_resource type="Script" path="res://Scenes/Main/StateMachine.gd" id="1_feate"]
+[ext_resource type="Script" path="res://Scenes/Enemy/Enemy.gd" id="1_sgd0a"]
+[ext_resource type="Script" path="res://Scenes/Enemy/EnemyIdle.gd" id="2_f6odf"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6xvf8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nh12v"]
+size = Vector2(10.1, 10)
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(10, 10)
+script = ExtResource("1_sgd0a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = SubResource("PlaceholderTexture2D_6xvf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.0499996, 1.90735e-07)
+shape = SubResource("RectangleShape2D_nh12v")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("1_feate")
+initialState = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("2_f6odf")
+enemy = NodePath("../..")

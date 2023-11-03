@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://1ukc6wt51vj8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbavg"]
+
+[node name="Background" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_tbavg")
