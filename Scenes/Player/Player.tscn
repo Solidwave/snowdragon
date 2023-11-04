@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bffvn3ulcjrlc"]
+[gd_scene load_steps=9 format=3 uid="uid://bffvn3ulcjrlc"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_0kf8f"]
 [ext_resource type="Texture2D" uid="uid://db83ugra0srar" path="res://icon.svg" id="2_ajv2h"]
 [ext_resource type="PackedScene" uid="uid://b3h544mgpoegf" path="res://Scenes/Joystick/Joystick.tscn" id="3_w4dpy"]
+[ext_resource type="Script" path="res://Scenes/HealthComponent/HealthComponent.gd" id="4_qyxpy"]
+[ext_resource type="Script" path="res://Scenes/HitboxComponent/HitBoxComponent.gd" id="5_e4mg6"]
+[ext_resource type="PackedScene" uid="uid://bkvm4iielmrsg" path="res://Scenes/Weapon/weapon.tscn" id="6_abhhd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nias7"]
+size = Vector2(6.4, 6.4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aflk8"]
 size = Vector2(6.4, 6.4)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("joystick") groups=["Player"]]
@@ -20,9 +26,20 @@ texture = ExtResource("2_ajv2h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nias7")
 
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("4_qyxpy")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("5_e4mg6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_aflk8")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.1, 0.1)
 
 [node name="Joystick" parent="Camera2D" instance=ExtResource("3_w4dpy")]
 position = Vector2(0, 280)
 scale = Vector2(0.7, 0.7)
+
+[node name="Weapon" parent="." instance=ExtResource("6_abhhd")]

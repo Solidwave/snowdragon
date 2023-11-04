@@ -1,5 +1,7 @@
 extends Node
 
+class_name StateMachine
+
 @export var initialState : State
 
 var states : Dictionary = {}
@@ -7,6 +9,7 @@ var states : Dictionary = {}
 var currentState : 	State
 
 func _ready():
+	print(get_children())
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child

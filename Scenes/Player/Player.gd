@@ -4,6 +4,8 @@ extends CharacterBody2D
 
 @export var speed = 300
 
+
+
 func _physics_process(delta):
 	var direction = joystick.posVector
 	

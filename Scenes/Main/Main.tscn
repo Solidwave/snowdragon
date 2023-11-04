@@ -11,4 +11,5 @@ layer_0/tile_data = PackedInt32Array(589817, 327681, 7, 589818, 393217, 3, 58981
 
 [node name="Enemy" parent="." instance=ExtResource("3_72nrt")]
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_0kp0s")]
+[node name="Player" parent="." instance=ExtResource("1_0kp0s")]
+speed = 300

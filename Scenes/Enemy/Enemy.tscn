@@ -1,17 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxsft1bnlaypf"]
+[gd_scene load_steps=10 format=3 uid="uid://dxsft1bnlaypf"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.gd" id="1_sgd0a"]
 [ext_resource type="Script" path="res://Scenes/Enemy/EnemyIdle.gd" id="2_f6odf"]
-[ext_resource type="Script" path="res://Scenes/Enemy/StateMachine.gd" id="2_so16n"]
+[ext_resource type="PackedScene" uid="uid://ncl1cayaqixr" path="res://Scenes/StateMachine/state_machine.tscn" id="4_3wtv5"]
 [ext_resource type="Script" path="res://Scenes/Enemy/EnemyChase.gd" id="4_18nnc"]
+[ext_resource type="PackedScene" uid="uid://b57lwrkefkde8" path="res://Scenes/HealthComponent/health_component.tscn" id="5_851v2"]
+[ext_resource type="PackedScene" uid="uid://b16avkxc6mjru" path="res://Scenes/HitboxComponent/hit_box_component.tscn" id="6_dhfle"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6xvf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh12v"]
 size = Vector2(10.1, 10)
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fktwi"]
+size = Vector2(10.2, 10)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(10, 10)
+platform_floor_layers = 4294967294
 script = ExtResource("1_sgd0a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,9 +28,16 @@ texture = SubResource("PlaceholderTexture2D_6xvf8")
 position = Vector2(0.0499996, 1.90735e-07)
 shape = SubResource("RectangleShape2D_nh12v")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
-script = ExtResource("2_so16n")
-initialState = NodePath("Chase")
+[node name="HealthComponent" parent="." instance=ExtResource("5_851v2")]
+
+[node name="HitboxComponent" parent="." groups=["Enemy"] instance=ExtResource("6_dhfle")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0.0999996, -5.72204e-07)
+shape = SubResource("RectangleShape2D_fktwi")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("4_3wtv5")]
+initialState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("2_f6odf")

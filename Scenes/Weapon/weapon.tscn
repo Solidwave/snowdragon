@@ -1,0 +1,135 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkvm4iielmrsg"]
+
+[ext_resource type="Script" path="res://Scenes/Weapon/weapon.gd" id="1_y4ykj"]
+[ext_resource type="Script" path="res://Scripts/State/StateMachine.gd" id="2_j4hw2"]
+[ext_resource type="Script" path="res://Scenes/Weapon/WeaponIdle.gd" id="3_w2yh2"]
+[ext_resource type="Script" path="res://Scenes/Weapon/Attacking.gd" id="4_ilhi6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u8v4i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4fus"]
+size = Vector2(1, 5.40001)
+
+[sub_resource type="Animation" id="Animation_nk8wp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.705113]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3i35q"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.698132, -0.698132]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8kf0"]
+_data = {
+"RESET": SubResource("Animation_nk8wp"),
+"attack": SubResource("Animation_3i35q")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y5ty3"]
+
+[node name="Weapon" type="Area2D"]
+rotation = 0.705113
+script = ExtResource("1_y4ykj")
+
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-0.1, -7.1)
+scale = Vector2(1, 5.4)
+texture = SubResource("PlaceholderTexture2D_u8v4i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.1, -7.1)
+shape = SubResource("RectangleShape2D_i4fus")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i8kf0")
+}
+
+[node name="TargetingArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingArea"]
+shape = SubResource("CircleShape2D_y5ty3")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("2_j4hw2")
+initialState = NodePath("WeaponIdle")
+
+[node name="WeaponIdle" type="Node" parent="StateMachine"]
+script = ExtResource("3_w2yh2")
+
+[node name="WeaponAttacking" type="Node" parent="StateMachine"]
+script = ExtResource("4_ilhi6")
+
+[connection signal="area_entered" from="TargetingArea" to="StateMachine/WeaponIdle" method="_on_targeting_area_area_entered"]
+[connection signal="area_exited" from="TargetingArea" to="StateMachine/WeaponAttacking" method="_on_targeting_area_area_exited"]
