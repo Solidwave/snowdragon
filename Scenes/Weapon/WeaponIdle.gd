@@ -8,12 +8,10 @@ extends State
 
 
 func Enter():
-	print("entered weapon idle")
 	animation_player.stop()
 	targeting_area.monitoring = true
 
 func Exit():
-	print("exiting weapon idle")
 	targeting_area.monitoring = false
 
 
