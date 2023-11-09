@@ -29,8 +29,10 @@ position = Vector2(0.0499996, 1.90735e-07)
 shape = SubResource("RectangleShape2D_nh12v")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_851v2")]
+maxHealth = 40
 
-[node name="HitboxComponent" parent="." groups=["Enemy"] instance=ExtResource("6_dhfle")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy"] instance=ExtResource("6_dhfle")]
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0.0999996, -5.72204e-07)

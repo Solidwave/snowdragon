@@ -9,7 +9,6 @@ var states : Dictionary = {}
 var currentState : 	State
 
 func _ready():
-	print(get_children())
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
@@ -19,7 +18,6 @@ func _ready():
 		currentState = initialState
 
 func _process(delta):
-	print(currentState.name)
 	if currentState:
 		currentState.Update(delta)
 
