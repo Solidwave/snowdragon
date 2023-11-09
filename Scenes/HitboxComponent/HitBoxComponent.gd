@@ -3,9 +3,12 @@ extends Area2D
 class_name HitboxComponent
 
 @export var health_component : HealthComponent
+@export var knockback_component : KnockbackComponent
 
 func damage(attack: Attack):
-	print('gotme')
 	if health_component:
-		print('gotme')
 		health_component.damage(attack)
+		
+	if knockback_component:
+		knockback_component.receiveKnockBack(attack)
+

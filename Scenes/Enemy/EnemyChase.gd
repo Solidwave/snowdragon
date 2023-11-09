@@ -20,3 +20,8 @@ func PhysicsUpdate(delta: float):
 		
 	if direction.length() > 500:
 		Transitioned.emit(self,"idle")
+
+
+func _on_hitbox_component_area_entered(area):
+	if area is HitboxComponent and area.is_in_group("Player"):
+		area.damage(enemy.attack)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxsft1bnlaypf"]
+[gd_scene load_steps=11 format=3 uid="uid://dxsft1bnlaypf"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.gd" id="1_sgd0a"]
 [ext_resource type="Script" path="res://Scenes/Enemy/EnemyIdle.gd" id="2_f6odf"]
 [ext_resource type="PackedScene" uid="uid://ncl1cayaqixr" path="res://Scenes/StateMachine/state_machine.tscn" id="4_3wtv5"]
 [ext_resource type="Script" path="res://Scenes/Enemy/EnemyChase.gd" id="4_18nnc"]
+[ext_resource type="PackedScene" uid="uid://b720lua30f1lc" path="res://Scenes/KnockbackComponent/knockback_component.tscn" id="4_hv0af"]
 [ext_resource type="PackedScene" uid="uid://b57lwrkefkde8" path="res://Scenes/HealthComponent/health_component.tscn" id="5_851v2"]
 [ext_resource type="PackedScene" uid="uid://b16avkxc6mjru" path="res://Scenes/HitboxComponent/hit_box_component.tscn" id="6_dhfle"]
 
@@ -31,12 +32,16 @@ shape = SubResource("RectangleShape2D_nh12v")
 [node name="HealthComponent" parent="." instance=ExtResource("5_851v2")]
 maxHealth = 40
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy"] instance=ExtResource("6_dhfle")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "knockback_component") groups=["Enemy"] instance=ExtResource("6_dhfle")]
 health_component = NodePath("../HealthComponent")
+knockback_component = NodePath("../KnockbackComponent")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0.0999996, -5.72204e-07)
 shape = SubResource("RectangleShape2D_fktwi")
+
+[node name="KnockbackComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_hv0af")]
+target = NodePath("..")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("4_3wtv5")]
 initialState = NodePath("Idle")
@@ -48,3 +53,5 @@ enemy = NodePath("../..")
 [node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_18nnc")
 enemy = NodePath("../..")
+
+[connection signal="area_entered" from="HitboxComponent" to="StateMachine/Chase" method="_on_hitbox_component_area_entered"]

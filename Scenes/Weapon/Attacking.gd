@@ -26,4 +26,5 @@ func _on_targeting_area_area_exited(area):
 func _on_pivot_area_entered(area):
 	if area is HitboxComponent and area.is_in_group(weapon.targetGroup):
 		print(area.get_parent().name)
+		weapon.attack.position = weapon.global_position
 		area.damage(weapon.attack)
