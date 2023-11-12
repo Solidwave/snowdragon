@@ -9,12 +9,15 @@ class_name Weapon
 
 @export var damage := 10
 @export var knockBack := 10
+@export var disabled := false
+
 
 @onready var animation_player = $AnimationPlayer
 
 var target : Area2D
 
 var attack : Attack
+
 
 func _ready():
 	attack = Attack.new(damage, knockBack, Vector2.ZERO)

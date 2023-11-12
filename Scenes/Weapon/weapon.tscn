@@ -74,10 +74,10 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y5ty3"]
 
-[node name="Weapon" type="Node2D"]
+[node name="Weapon" type="Node2D" groups=["Weapon"]]
 script = ExtResource("1_y4ykj")
 
-[node name="Pivot" type="Area2D" parent="."]
+[node name="Pivot" type="Area2D" parent="." groups=["Weapon"]]
 rotation = 0.359538
 
 [node name="Hitbox" type="CollisionShape2D" parent="Pivot"]

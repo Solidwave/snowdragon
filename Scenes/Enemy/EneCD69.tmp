@@ -43,7 +43,6 @@ shape = SubResource("RectangleShape2D_fktwi")
 
 [node name="KnockbackComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_hv0af")]
 target = NodePath("..")
-exitVelocity = 10
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("4_3wtv5")]
 initialState = NodePath("Idle")
@@ -58,3 +57,5 @@ enemy = NodePath("../..")
 
 [node name="Stunned" type="Node" parent="StateMachine"]
 script = ExtResource("8_hjmu3")
+
+[connection signal="area_entered" from="HitboxComponent" to="StateMachine/Chase" method="_on_hitbox_component_area_entered"]

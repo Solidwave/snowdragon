@@ -30,8 +30,11 @@ func PhysicsUpdate(delta):
 	if enemy:
 		enemy.velocity = moveDirection * moveSpeed
 		
+	if player == null:
+		return
+		
 	var direction = player.global_position - enemy.global_position
 	
-	if direction.length() < 300:
+	if direction.length() < enemy.detectionRange:
 		Transitioned.emit(self,"chase")
 	

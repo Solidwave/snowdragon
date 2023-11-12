@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://r3jvf1mfqex3"]
+
+[ext_resource type="Script" path="res://UI/HealthBar/HealthBar.gd" id="1_8p1mk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbicw"]
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jts3k"]
+bg_color = Color(0.937255, 0.380392, 0.407843, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="Theme" id="Theme_qpvkq"]
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
+ProgressBar/colors/font_shadow_color = Color(0, 0, 0, 1)
+ProgressBar/styles/background = SubResource("StyleBoxFlat_fbicw")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_jts3k")
+
+[node name="ProgressBar" type="ProgressBar"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 520.0
+offset_bottom = 60.0
+theme = SubResource("Theme_qpvkq")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+script = ExtResource("1_8p1mk")
