@@ -4,17 +4,21 @@ class_name Enemy
 
 var attack : Attack
 
-@export var damage := 5
+@export var resource : EnemyResource
 
-@export var knockBack := 200
+@onready var sprite : Sprite2D = $"Sprite2D"
 
-@export var detectionRange := 500
-
+@onready var health_component : HealthComponent = $"HealthComponent" 
 
 func _ready():
-	attack = Attack.new(damage, knockBack, Vector2.ZERO)
+	attack = Attack.new(resource.attack, resource.knockback, Vector2.ZERO)
 
-func _physics_process(delta):
+	sprite.texture = resource.texture
+
+	health_component.maxHealth = resource.maxHealth
+	
+
+func _physics_process(_delta):
 	move_and_slide()
 	
 	

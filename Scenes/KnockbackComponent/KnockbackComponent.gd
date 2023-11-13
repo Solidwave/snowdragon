@@ -11,7 +11,7 @@ var velocity = Vector2.ZERO
 func receiveKnockBack(attack : Attack):
 	velocity = (target.global_position - attack.position).normalized() * 2000
 	hit = true
-
+ 
 func _physics_process(delta):
 	if hit:
 		target.global_position += velocity * delta

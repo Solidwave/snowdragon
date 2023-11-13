@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://pyneill1fsjr"]
+
+[ext_resource type="Script" path="res://Resources/EnemyResource.gd" id="1_rbqxt"]
+[ext_resource type="Texture2D" uid="uid://bcc0oauhudgkc" path="res://Textures/Enemies/Bat/bat_atlas.tres" id="2_u8eiu"]
+
+[resource]
+script = ExtResource("1_rbqxt")
+texture = ExtResource("2_u8eiu")
+type = "monster"
+id = 2
+attack = 10
+knockback = 10
+speed = 200
+detectRange = 1000
+maxHealth = 30
+variant = "normal"
+stunnedAnimation = "bat_stunned"
+idleAnimation = "bat_idle"
+chaseAnimation = "bat_chase"

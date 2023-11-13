@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.gd" id="1_sgd0a"]
 [ext_resource type="Script" path="res://Scenes/Enemy/EnemyIdle.gd" id="2_f6odf"]
+[ext_resource type="Texture2D" uid="uid://bcc0oauhudgkc" path="res://Textures/Enemies/Bat/bat_atlas.tres" id="2_rxkao"]
 [ext_resource type="PackedScene" uid="uid://ncl1cayaqixr" path="res://Scenes/StateMachine/state_machine.tscn" id="4_3wtv5"]
 [ext_resource type="Script" path="res://Scenes/Enemy/EnemyChase.gd" id="4_18nnc"]
 [ext_resource type="PackedScene" uid="uid://b720lua30f1lc" path="res://Scenes/KnockbackComponent/knockback_component.tscn" id="4_hv0af"]
@@ -9,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://b16avkxc6mjru" path="res://Scenes/HitboxComponent/hit_box_component.tscn" id="6_dhfle"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Stunned.gd" id="8_hjmu3"]
 [ext_resource type="PackedScene" uid="uid://r3jvf1mfqex3" path="res://UI/HealthBar/HealthBar.tscn" id="9_awnma"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6xvf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh12v"]
 size = Vector2(10.1, 10)
@@ -22,11 +21,12 @@ size = Vector2(10.2, 10)
 scale = Vector2(10, 10)
 platform_floor_layers = 4294967294
 script = ExtResource("1_sgd0a")
-knockBack = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(10, 10)
-texture = SubResource("PlaceholderTexture2D_6xvf8")
+texture_filter = 1
+position = Vector2(0.5, 1.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rxkao")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.0499996, 1.90735e-07)

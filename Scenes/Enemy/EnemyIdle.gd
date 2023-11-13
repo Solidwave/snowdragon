@@ -2,9 +2,9 @@ extends State
 
 class_name EnemyIdle
 
-@export var enemy : CharacterBody2D
+@export var enemy : Enemy
 
-@export var moveSpeed := 50
+@onready var animationPlayer = $"../../AnimationPlayer"
 
 var player : CharacterBody2D
 
@@ -17,6 +17,8 @@ func randomizeWander():
 	wanderTime = randf_range(1,3)
 	
 func Enter():
+	if animationPlayer:
+		animationPlayer.play(enemy.resource.idleAnimation)
 	player = get_tree().get_first_node_in_group("Player")
 	randomizeWander()
 	
@@ -26,15 +28,15 @@ func Update(delta):
 	else:
 		randomizeWander()
 		
-func PhysicsUpdate(delta):
+func PhysicsUpdate(_delta):
 	if enemy:
-		enemy.velocity = moveDirection * moveSpeed
+		enemy.velocity = moveDirection * enemy.resource.speed
 		
 	if player == null:
 		return
 		
 	var direction = player.global_position - enemy.global_position
 	
-	if direction.length() < enemy.detectionRange:
+	if direction.length() < enemy.resource.detectRange:
 		Transitioned.emit(self,"chase")
 	
