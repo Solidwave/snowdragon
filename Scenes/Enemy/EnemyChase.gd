@@ -2,7 +2,7 @@ extends State
 
 class_name EnemyChase
 @export var enemy : CharacterBody2D
-@export var moveSpeed := 60
+@export var moveSpeed := 100
 @onready var knockback_component = $"../../KnockbackComponent"
 
 var player : CharacterBody2D

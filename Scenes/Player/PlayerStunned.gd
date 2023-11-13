@@ -9,6 +9,8 @@ class_name PlayerStunned
 
 func Enter():
 	var enemy: Enemy = player.enemyCollision.get_collider()
+	if 	enemy == null:
+		Transitioned.emit(self,"playeridle")	
 	enemy.attack.position = enemy.global_position
 	hitbox_component.damage(enemy.attack)
 	
@@ -16,6 +18,6 @@ func Exit():
 	player.enemyCollision = null
 	
 func Update(delta: float):
-	if player.velocity.length() < 50:
+	if !knockback_component.hit:
 		Transitioned.emit(self,"playeridle")
 

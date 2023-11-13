@@ -6,7 +6,8 @@ class_name EnemyStunned
 
 @onready var knockback_component = $"../../KnockbackComponent"
 
-		
-func PhysicsUpdate(delta):
-	if enemy.velocity.length() < knockback_component.exitVelocity:
+
+func Update(delta):
+	if knockback_component.hit == false:
 		Transitioned.emit(self, "idle")
+		

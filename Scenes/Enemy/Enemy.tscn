@@ -21,6 +21,7 @@ size = Vector2(10.2, 10)
 scale = Vector2(10, 10)
 platform_floor_layers = 4294967294
 script = ExtResource("1_sgd0a")
+knockBack = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(10, 10)
@@ -31,7 +32,7 @@ position = Vector2(0.0499996, 1.90735e-07)
 shape = SubResource("RectangleShape2D_nh12v")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_851v2")]
-maxHealth = 40
+maxHealth = 1000
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "knockback_component") groups=["Enemy"] instance=ExtResource("6_dhfle")]
 health_component = NodePath("../HealthComponent")
