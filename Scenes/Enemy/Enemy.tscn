@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxsft1bnlaypf"]
+[gd_scene load_steps=13 format=3 uid="uid://dxsft1bnlaypf"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.gd" id="1_sgd0a"]
 [ext_resource type="Script" path="res://Scenes/Enemy/EnemyIdle.gd" id="2_f6odf"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b57lwrkefkde8" path="res://Scenes/HealthComponent/health_component.tscn" id="5_851v2"]
 [ext_resource type="PackedScene" uid="uid://b16avkxc6mjru" path="res://Scenes/HitboxComponent/hit_box_component.tscn" id="6_dhfle"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Stunned.gd" id="8_hjmu3"]
+[ext_resource type="PackedScene" uid="uid://r3jvf1mfqex3" path="res://UI/HealthBar/HealthBar.tscn" id="9_awnma"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6xvf8"]
 
@@ -31,8 +32,9 @@ texture = SubResource("PlaceholderTexture2D_6xvf8")
 position = Vector2(0.0499996, 1.90735e-07)
 shape = SubResource("RectangleShape2D_nh12v")
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_851v2")]
-maxHealth = 1000
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("healthBar") instance=ExtResource("5_851v2")]
+maxHealth = 100
+healthBar = NodePath("../ProgressBar")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "knockback_component") groups=["Enemy"] instance=ExtResource("6_dhfle")]
 health_component = NodePath("../HealthComponent")
@@ -59,3 +61,10 @@ enemy = NodePath("../..")
 
 [node name="Stunned" type="Node" parent="StateMachine"]
 script = ExtResource("8_hjmu3")
+
+[node name="ProgressBar" parent="." instance=ExtResource("9_awnma")]
+offset_left = -3.0
+offset_top = -7.0
+offset_right = 249.0
+offset_bottom = 33.0
+scale = Vector2(0.025, 0.025)
