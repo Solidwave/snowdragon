@@ -1,14 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://bkvm4iielmrsg"]
 
 [ext_resource type="Script" path="res://Scenes/Weapon/weapon.gd" id="1_y4ykj"]
+[ext_resource type="Texture2D" uid="uid://p3x5w8tec7i7" path="res://Textures/Weapons/Swords/Iicon_32_01.png" id="2_0jaos"]
 [ext_resource type="Script" path="res://Scripts/State/StateMachine.gd" id="2_j4hw2"]
 [ext_resource type="Script" path="res://Scenes/Weapon/WeaponIdle.gd" id="3_w2yh2"]
-[ext_resource type="Script" path="res://Scenes/Weapon/Attacking.gd" id="4_ilhi6"]
+[ext_resource type="Script" path="res://Scenes/Weapon/WeaponAttacking.gd" id="4_ilhi6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4fus"]
 size = Vector2(1, 5.40001)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u8v4i"]
 
 [sub_resource type="Animation" id="Animation_nk8wp"]
 length = 0.001
@@ -86,9 +85,11 @@ shape = SubResource("RectangleShape2D_i4fus")
 
 [node name="WeaponSprite" type="Sprite2D" parent="Pivot"]
 visible = false
-position = Vector2(-0.1, -7.1)
-scale = Vector2(1, 5.4)
-texture = SubResource("PlaceholderTexture2D_u8v4i")
+texture_filter = 1
+position = Vector2(-0.072, -7.234)
+rotation = -0.785397
+scale = Vector2(0.150143, 0.150143)
+texture = ExtResource("2_0jaos")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

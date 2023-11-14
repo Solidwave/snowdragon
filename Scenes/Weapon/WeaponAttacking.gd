@@ -6,12 +6,12 @@ extends State
 @onready var targeting_area = $"../../TargetingArea"
 
 func Enter():
-	animation_player.play("attack")
-	pass
+	animation_player.play(weapon.res.attackAnimation)
+
 func Exit():
 	animation_player.play("RESET")
-	pass
-func Update(delta):
+	
+func Update(_delta):
 	if weapon.target == null:
 		Transitioned.emit(self, "weaponidle")
 	else:	
@@ -24,6 +24,6 @@ func _on_targeting_area_area_exited(area):
 
 
 func _on_pivot_area_entered(area):
-	if area is HitboxComponent and area.is_in_group(weapon.targetGroup):
+	if area is HitboxComponent and area.is_in_group(weapon.res.targetGroup):
 		weapon.attack.position = weapon.global_position
 		area.damage(weapon.attack)

@@ -18,6 +18,15 @@ func _ready():
 		healthBar.min_value = 0
 		
 		healthBar.value = maxHealth
+		
+func updateBar(_maxHealth,_value):
+	print(_maxHealth,_value, healthBar)
+	if healthBar:
+		if _maxHealth:
+			healthBar.max_value = _maxHealth
+		if _value:
+			healthBar.value = _value
+		
 	
 func damage(attack: Attack):
 	health = health - attack.damage

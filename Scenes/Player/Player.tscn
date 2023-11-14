@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bffvn3ulcjrlc"]
+[gd_scene load_steps=15 format=3 uid="uid://bffvn3ulcjrlc"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_0kf8f"]
 [ext_resource type="Texture2D" uid="uid://db83ugra0srar" path="res://icon.svg" id="2_ajv2h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/HitboxComponent/HitBoxComponent.gd" id="5_e4mg6"]
 [ext_resource type="PackedScene" uid="uid://bkvm4iielmrsg" path="res://Scenes/Weapon/weapon.tscn" id="6_abhhd"]
 [ext_resource type="PackedScene" uid="uid://r3jvf1mfqex3" path="res://UI/HealthBar/HealthBar.tscn" id="8_yb0ip"]
+[ext_resource type="Resource" uid="uid://drf0ahlo7yn0h" path="res://Resources/Istances/Weapons/SimpleSword.tres" id="9_fkbqu"]
 [ext_resource type="Script" path="res://Scripts/State/StateMachine.gd" id="9_st76y"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerIdle.gd" id="10_q2e20"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerStunned.gd" id="11_w6vsv"]
@@ -61,7 +62,7 @@ scale = Vector2(0.7, 0.7)
 
 [node name="Weapon" parent="." instance=ExtResource("6_abhhd")]
 rotation = 1.91463
-knockBack = 1000
+res = ExtResource("9_fkbqu")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("9_st76y")

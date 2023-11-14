@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bffvn3ulcjrlc" path="res://Scenes/Player/Player.tscn" id="1_0kp0s"]
 [ext_resource type="PackedScene" uid="uid://du70qfmiocvdl" path="res://Scenes/Tilemap/tile_map.tscn" id="1_o50do"]
-[ext_resource type="PackedScene" uid="uid://dxsft1bnlaypf" path="res://Scenes/Enemy/Enemy.tscn" id="3_72nrt"]
-[ext_resource type="Resource" uid="uid://pyneill1fsjr" path="res://Scenes/Enemies/Bat/BatResource.tres" id="4_f1ejp"]
+[ext_resource type="PackedScene" uid="uid://dxsft1bnlaypf" path="res://Scenes/Enemy/Enemy.tscn" id="3_02126"]
+[ext_resource type="Resource" uid="uid://pyneill1fsjr" path="res://Scenes/Enemies/Bat/BatResource.tres" id="4_xxn0a"]
 
 [node name="Main" type="Node2D"]
 
@@ -12,6 +12,6 @@ layer_0/tile_data = PackedInt32Array(589817, 327681, 7, 589818, 393217, 3, 58981
 
 [node name="Player" parent="." instance=ExtResource("1_0kp0s")]
 
-[node name="Enemy" parent="." instance=ExtResource("3_72nrt")]
-position = Vector2(-18, 191)
-resource = ExtResource("4_f1ejp")
+[node name="Enemy" parent="." instance=ExtResource("3_02126")]
+slide_on_ceiling = false
+resource = ExtResource("4_xxn0a")

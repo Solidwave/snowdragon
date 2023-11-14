@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://pyneill1fsjr"]
 
-[ext_resource type="Script" path="res://Resources/EnemyResource.gd" id="1_rbqxt"]
+[ext_resource type="Script" path="res://Resources/Types/EnemyResource.gd" id="1_rbqxt"]
 [ext_resource type="Texture2D" uid="uid://bcc0oauhudgkc" path="res://Textures/Enemies/Bat/bat_atlas.tres" id="2_u8eiu"]
 
 [resource]

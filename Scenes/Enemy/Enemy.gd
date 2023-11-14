@@ -10,15 +10,21 @@ var attack : Attack
 
 @onready var health_component : HealthComponent = $"HealthComponent" 
 
+@export var stop = false
+
 func _ready():
 	attack = Attack.new(resource.attack, resource.knockback, Vector2.ZERO)
 
 	sprite.texture = resource.texture
-
-	health_component.maxHealth = resource.maxHealth
+	
+	health_component.health = resource.maxHealth
+	
+	health_component.updateBar(resource.maxHealth, resource.maxHealth) 
+	
 	
 
 func _physics_process(_delta):
-	move_and_slide()
+	if !stop:
+		move_and_slide()
 	
 	

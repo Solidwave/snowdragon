@@ -18,7 +18,7 @@ func Exit():
 func _on_targeting_area_area_entered(area):
 	if weapon.disabled:
 		return
-	if 	area is HitboxComponent and area.is_in_group(weapon.targetGroup):
+	if 	area is HitboxComponent and area.is_in_group(weapon.res.targetGroup):
 		weapon.target = area
 		
 		Transitioned.emit(self, "weaponattacking")

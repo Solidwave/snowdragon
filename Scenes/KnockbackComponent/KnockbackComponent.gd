@@ -16,8 +16,7 @@ func _physics_process(delta):
 	if hit:
 		target.global_position += velocity * delta
 
-		# Damping to create a deceleration effect
 		velocity = velocity.lerp(Vector2.ZERO, 0.2)
-		print(velocity)
+		
 		if velocity.length() < 5:
 			hit = false

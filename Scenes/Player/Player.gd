@@ -11,14 +11,10 @@ class_name Player
 
 var enemyCollision : KinematicCollision2D = null
 
-func _physics_process(delta):
-		
+func _physics_process(_delta):
 	move_and_slide()
 	
-	
-			
-	
-func move(delta):
+func move(_delta):
 	var direction = joystick.posVector
 	
 	if direction:

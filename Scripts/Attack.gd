@@ -1,13 +1,13 @@
 class_name Attack
 
-var damage : float
-var knockbackForce : float
-var position : Vector2
+@export var damage : float
+@export var knockbackForce : float
+@export var position : Vector2
 
 
-func _init(damage : float, knockbackForce: float, position: Vector2):
-	self.damage = damage
+func _init(damageParam : float, knockbackForceParam: float, positionParam: Vector2):
+	damage = damageParam
 	
-	self.knockbackForce = knockbackForce
+	knockbackForce = knockbackForceParam
 	
-	self.position = position
+	position = positionParam
