@@ -11,26 +11,25 @@
 [ext_resource type="Script" path="res://Scenes/Enemy/Stunned.gd" id="8_hjmu3"]
 [ext_resource type="PackedScene" uid="uid://r3jvf1mfqex3" path="res://UI/HealthBar/HealthBar.tscn" id="9_awnma"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nh12v"]
-size = Vector2(10.1, 10)
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5e4b"]
+radius = 4.30116
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fktwi"]
-size = Vector2(10.2, 10)
+[sub_resource type="CircleShape2D" id="CircleShape2D_185d3"]
+radius = 3.10161
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(10, 10)
 platform_floor_layers = 4294967294
 script = ExtResource("1_sgd0a")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_n5e4b")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0.5, 1.5)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_rxkao")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.0499996, 1.90735e-07)
-shape = SubResource("RectangleShape2D_nh12v")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("healthBar") instance=ExtResource("5_851v2")]
 maxHealth = 100
@@ -42,7 +41,7 @@ knockback_component = NodePath("../KnockbackComponent")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0.0999996, -5.72204e-07)
-shape = SubResource("RectangleShape2D_fktwi")
+shape = SubResource("CircleShape2D_185d3")
 
 [node name="KnockbackComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_hv0af")]
 target = NodePath("..")

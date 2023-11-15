@@ -25,4 +25,3 @@ class_name EnemyResource
 @export var idleAnimation: String
 
 @export var chaseAnimation: String
-

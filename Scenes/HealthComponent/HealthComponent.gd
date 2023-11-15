@@ -6,7 +6,10 @@ class_name HealthComponent
 
 @export var healthBar : HealthBar
 
+@export var invincible := false
+
 var health : float
+
 
 func _ready():
 	health = maxHealth
@@ -29,6 +32,8 @@ func updateBar(_maxHealth,_value):
 		
 	
 func damage(attack: Attack):
+	if invincible:
+		return
 	health = health - attack.damage
 	
 	if 	healthBar:

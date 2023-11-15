@@ -4,11 +4,14 @@ class_name KnockbackComponent
 
 @export var target : CharacterBody2D
 @export var exitVelocity := 50
+@export var invincible := false
 
 var hit = false
 var velocity = Vector2.ZERO
 
 func receiveKnockBack(attack : Attack):
+	if invincible:
+		return
 	velocity = (target.global_position - attack.position).normalized() * 2000
 	hit = true
  
