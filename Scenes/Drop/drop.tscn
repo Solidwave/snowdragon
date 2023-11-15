@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7smdfn5ly42y"]
+
+[ext_resource type="Script" path="res://Scenes/Drop/Drop.gd" id="1_1ns8f"]
+[ext_resource type="Resource" uid="uid://b20m8hxdbg5fy" path="res://Resources/Istances/Items/AttackSpeedPU.tres" id="2_q7tng"]
+[ext_resource type="Texture2D" uid="uid://h1x6u4fphthv" path="res://Textures/Items/drop-items-atlas.png" id="3_wcrqn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olo4j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmj78"]
+atlas = ExtResource("3_wcrqn")
+region = Rect2(352, 448, 32, 32)
+
+[sub_resource type="Animation" id="Animation_mmymr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bduhe"]
+resource_name = "dropped"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ntwj"]
+_data = {
+"RESET": SubResource("Animation_mmymr"),
+"dropped": SubResource("Animation_bduhe")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8313t"]
+radius = 50.0
+
+[node name="Drop" type="RigidBody2D" groups=["Drop"]]
+texture_filter = 1
+gravity_scale = 0.0
+script = ExtResource("1_1ns8f")
+res = ExtResource("2_q7tng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_olo4j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_cmj78")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ntwj")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8313t")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -7,6 +7,7 @@ extends State
 
 func Enter():
 	animation_player.play(weapon.res.attackAnimation)
+	animation_player.speed_scale = weapon.attackSpeed
 
 func Exit():
 	animation_player.play("RESET")

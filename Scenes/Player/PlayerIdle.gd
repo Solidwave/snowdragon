@@ -24,5 +24,9 @@ func PhysicsUpdate(delta: float):
 			player.enemyCollision = collision
 			
 			Transitioned.emit(self,"playerstunned")
+			
+		if collision.get_collider().is_in_group("Drop"):
+			print(collision.get_collider())
+			player.processDrop(collision.get_collider())
 
 

@@ -10,6 +10,7 @@ class_name Weapon
 
 @export var disabled := false
 
+@export var attackSpeed : float = 1
 
 @onready var animation_player = $AnimationPlayer
 

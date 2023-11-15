@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://b20m8hxdbg5fy"]
+
+[ext_resource type="PackedScene" uid="uid://0svk0f4gutc0" path="res://Scenes/PowerUps/AttackSpeed/attack_speed_pu.tscn" id="1_5rn55"]
+[ext_resource type="Script" path="res://Resources/Types/ItemResource.gd" id="1_gdqmv"]
+[ext_resource type="Texture2D" uid="uid://h1x6u4fphthv" path="res://Textures/Items/drop-items-atlas.png" id="2_aovtd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko82q"]
+atlas = ExtResource("2_aovtd")
+region = Rect2(352, 448, 32, 32)
+
+[resource]
+script = ExtResource("1_gdqmv")
+texture = SubResource("AtlasTexture_ko82q")
+type = "powerup"
+id = 0
+scene = ExtResource("1_5rn55")

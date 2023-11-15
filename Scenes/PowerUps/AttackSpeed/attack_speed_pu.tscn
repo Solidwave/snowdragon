@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0svk0f4gutc0"]
+
+[ext_resource type="Script" path="res://Scenes/PowerUps/AttackSpeed/AttackSpeedPU.gd" id="1_8m0w2"]
+
+[node name="AttackSpeedPU" type="Node"]
+script = ExtResource("1_8m0w2")

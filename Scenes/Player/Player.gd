@@ -22,3 +22,12 @@ func move(_delta):
 	else:
 		velocity = Vector2.ZERO
 	
+func processDrop(drop: Drop):
+	print("Look a", drop.res)
+	match drop.res.type:
+		'powerup' :
+			var powerup = drop.res.scene.instantiate()
+			add_child(powerup)
+	
+	drop.queue_free()
+	
