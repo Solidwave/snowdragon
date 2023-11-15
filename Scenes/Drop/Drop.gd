@@ -3,14 +3,16 @@ extends RigidBody2D
 class_name Drop
 
 @export var res : ItemResource
-@onready var sprite_2d = $Sprite2D
+@onready var sprite_2d : Sprite2D = $Sprite2D
 
 var player : Player
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	sprite_2d.texture = res.texture
+	print(sprite_2d, res.texture)
+	sprite_2d.set_texture(res.texture)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
