@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddxf7kvqsj0gv"]
 
-[ext_resource type="Theme" uid="uid://do8in22mnc6hb" path="res://UI/Theme/main_theme.tres" id="1_kfsop"]
+[ext_resource type="Script" path="res://UI/Menu/Menu.gd" id="1_u5mta"]
 [ext_resource type="Texture2D" uid="uid://db83ugra0srar" path="res://icon.svg" id="2_p8vt2"]
 
 [node name="Control" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_kfsop")
+script = ExtResource("1_u5mta")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -54,20 +54,20 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 47
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 4
 text = "Play
 "
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 4
-text = "Play
+text = "Options
 "
 
-[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 4
-text = "Play
+text = "Exit
 "
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

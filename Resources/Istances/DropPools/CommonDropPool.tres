@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="DropPoolResource" load_steps=3 format=3 uid="uid://c7pdswjeave8b"]
+[gd_resource type="Resource" script_class="DropPoolResource" load_steps=4 format=3 uid="uid://c7pdswjeave8b"]
 
 [ext_resource type="Script" path="res://Resources/Types/DropPool.gd" id="1_ardtm"]
 [ext_resource type="Resource" uid="uid://b20m8hxdbg5fy" path="res://Resources/Istances/Items/AttackSpeedPU.tres" id="1_uus8e"]
+[ext_resource type="Resource" uid="uid://baos76halw4dw" path="res://Resources/Istances/Items/Apple.tres" id="2_c7ja8"]
 
 [resource]
 script = ExtResource("1_ardtm")
-items = Array[Resource("res://Resources/Types/ItemResource.gd")]([ExtResource("1_uus8e")])
-chances = Array[float]([1.0])
+items = Array[Resource("res://Resources/Types/ItemResource.gd")]([ExtResource("1_uus8e"), ExtResource("2_c7ja8")])
+chances = Array[float]([0.1, 0.2])

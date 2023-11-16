@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=7 format=3 uid="uid://dr8ctqxjlpd52"]
+
+[ext_resource type="Script" path="res://Resources/Types/EnemyResource.gd" id="1_4qimb"]
+[ext_resource type="Resource" uid="uid://baos76halw4dw" path="res://Resources/Istances/Items/Apple.tres" id="1_mrvtj"]
+[ext_resource type="Script" path="res://Resources/Types/DropPool.gd" id="2_rtiye"]
+[ext_resource type="Texture2D" uid="uid://qnwnc15o7h8" path="res://Textures/Enemies/Skeleton/Skeleton.png" id="4_3chfd"]
+
+[sub_resource type="Resource" id="Resource_kwem3"]
+script = ExtResource("2_rtiye")
+items = Array[Resource("res://Resources/Types/ItemResource.gd")]([ExtResource("1_mrvtj")])
+chances = Array[float]([0.5])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joui6"]
+atlas = ExtResource("4_3chfd")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_4qimb")
+texture = SubResource("AtlasTexture_joui6")
+type = "monster"
+id = 1
+attack = 15
+knockback = 30
+speed = 50
+detectRange = 500
+maxHealth = 50
+variant = "normal"
+stunnedAnimation = ""
+idleAnimation = ""
+chaseAnimation = ""
+dropPool = SubResource("Resource_kwem3")
