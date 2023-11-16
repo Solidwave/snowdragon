@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="EnemyResource" load_steps=4 format=3 uid="uid://pyneill1fsjr"]
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=5 format=3 uid="uid://pyneill1fsjr"]
 
 [ext_resource type="Resource" uid="uid://c7pdswjeave8b" path="res://Resources/Istances/DropPools/CommonDropPool.tres" id="1_0m178"]
 [ext_resource type="Script" path="res://Resources/Types/EnemyResource.gd" id="2_rhbpj"]
-[ext_resource type="Texture2D" uid="uid://bcc0oauhudgkc" path="res://Textures/Enemies/Bat/bat_atlas.tres" id="3_u2mqs"]
+[ext_resource type="Texture2D" uid="uid://bs3ibb2rgltqf" path="res://Textures/Enemies/Bat/32x32-bat-sprite.png" id="3_jilli"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecuo8"]
+atlas = ExtResource("3_jilli")
+region = Rect2(64, 0, 32, 32)
 
 [resource]
 script = ExtResource("2_rhbpj")
-texture = ExtResource("3_u2mqs")
+texture = SubResource("AtlasTexture_ecuo8")
 type = "monster"
 id = 2
 attack = 10

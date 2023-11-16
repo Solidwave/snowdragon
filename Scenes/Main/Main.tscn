@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnwg5xeyracqa"]
+[gd_scene load_steps=6 format=3 uid="uid://bnwg5xeyracqa"]
 
 [ext_resource type="PackedScene" uid="uid://bffvn3ulcjrlc" path="res://Scenes/Player/Player.tscn" id="1_0kp0s"]
 [ext_resource type="PackedScene" uid="uid://du70qfmiocvdl" path="res://Scenes/Tilemap/tile_map.tscn" id="1_o50do"]
-[ext_resource type="PackedScene" uid="uid://dxsft1bnlaypf" path="res://Scenes/Enemy/Enemy.tscn" id="3_02126"]
-[ext_resource type="Resource" uid="uid://dr8ctqxjlpd52" path="res://Resources/Istances/Enemies/Skeleton/skeleton.tres" id="5_dg4nd"]
+[ext_resource type="PackedScene" uid="uid://y6oggf8lkcjl" path="res://Scenes/Enemies/bat.tscn" id="4_uhuva"]
+[ext_resource type="PackedScene" uid="uid://b6gb1ibkaaic0" path="res://Scenes/Enemies/skeleton.tscn" id="5_8shxs"]
 [ext_resource type="PackedScene" uid="uid://crogod5qtnt8e" path="res://Scenes/Environment/tree.tscn" id="7_5kp5p"]
-[ext_resource type="Resource" uid="uid://pyneill1fsjr" path="res://Resources/Istances/Enemies/Bat/BatResource.tres" id="7_22hnl"]
 
 [node name="Main" type="Node2D"]
 
@@ -503,53 +502,29 @@ position = Vector2(475, 2208)
 [node name="Tree163" parent="Forest" instance=ExtResource("7_5kp5p")]
 position = Vector2(454, 2293)
 
-[node name="Enemy" parent="." instance=ExtResource("3_02126")]
-position = Vector2(-577, 350)
-resource = ExtResource("5_dg4nd")
-
-[node name="Enemy2" parent="." instance=ExtResource("3_02126")]
-position = Vector2(-1228, 337)
-resource = ExtResource("7_22hnl")
-
-[node name="Enemy3" parent="." instance=ExtResource("3_02126")]
-position = Vector2(-1235, 1118)
-resource = ExtResource("7_22hnl")
-
-[node name="Enemy4" parent="." instance=ExtResource("3_02126")]
-position = Vector2(-1222, 702)
-resource = ExtResource("7_22hnl")
-
-[node name="Enemy5" parent="." instance=ExtResource("3_02126")]
-position = Vector2(-527, 931)
-resource = ExtResource("5_dg4nd")
-
-[node name="Enemy6" parent="." instance=ExtResource("3_02126")]
-position = Vector2(-663, 1629)
-resource = ExtResource("5_dg4nd")
-
-[node name="Enemy7" parent="." instance=ExtResource("3_02126")]
-position = Vector2(318, 1394)
-resource = ExtResource("5_dg4nd")
-
-[node name="Enemy8" parent="." instance=ExtResource("3_02126")]
-position = Vector2(1032, 931)
-resource = ExtResource("5_dg4nd")
-
-[node name="Enemy9" parent="." instance=ExtResource("3_02126")]
-position = Vector2(400, 775)
-resource = ExtResource("5_dg4nd")
-
-[node name="Enemy10" parent="." instance=ExtResource("3_02126")]
-position = Vector2(1258, 518)
-resource = ExtResource("7_22hnl")
-
-[node name="Enemy11" parent="." instance=ExtResource("3_02126")]
-position = Vector2(1858, 566)
-resource = ExtResource("7_22hnl")
-
-[node name="Enemy12" parent="." instance=ExtResource("3_02126")]
-position = Vector2(1727, 1356)
-resource = ExtResource("5_dg4nd")
-
 [node name="Player" parent="." instance=ExtResource("1_0kp0s")]
 position = Vector2(138, 2064)
+
+[node name="Bat" parent="." instance=ExtResource("4_uhuva")]
+position = Vector2(-756, 1647)
+
+[node name="Skeleton" parent="." instance=ExtResource("5_8shxs")]
+position = Vector2(-799, 1820)
+
+[node name="Bat2" parent="." instance=ExtResource("4_uhuva")]
+position = Vector2(-1219, 1169)
+
+[node name="Skeleton2" parent="." instance=ExtResource("5_8shxs")]
+position = Vector2(-848, 1092)
+
+[node name="Bat3" parent="." instance=ExtResource("4_uhuva")]
+position = Vector2(-301, 1441)
+
+[node name="Skeleton3" parent="." instance=ExtResource("5_8shxs")]
+position = Vector2(-468, 865)
+
+[node name="Bat4" parent="." instance=ExtResource("4_uhuva")]
+position = Vector2(952, 954)
+
+[node name="Skeleton4" parent="." instance=ExtResource("5_8shxs")]
+position = Vector2(1016, 1462)

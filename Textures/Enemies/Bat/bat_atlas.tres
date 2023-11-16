@@ -1,7 +1,7 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bcc0oauhudgkc"]
 
-[ext_resource type="Texture2D" uid="uid://bs3ibb2rgltqf" path="res://Textures/Enemies/Bat/32x32-bat-sprite.png" id="1_tivd3"]
+[ext_resource type="Texture2D" uid="uid://qnwnc15o7h8" path="res://Textures/Enemies/Skeleton/Skeleton.png" id="1_0jtcx"]
 
 [resource]
-atlas = ExtResource("1_tivd3")
+atlas = ExtResource("1_0jtcx")
 region = Rect2(96, 0, 32, 32)

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var joystick : Node2D
+@export var joystick : Joystick
 
 @export var hitbox : HitboxComponent
 

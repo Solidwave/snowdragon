@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://y6oggf8lkcjl"]
+
+[ext_resource type="PackedScene" uid="uid://dxsft1bnlaypf" path="res://Scenes/Enemy/Enemy.tscn" id="1_2jgus"]
+[ext_resource type="Resource" uid="uid://pyneill1fsjr" path="res://Resources/Istances/Enemies/Bat/BatResource.tres" id="2_0wlkj"]
+
+[node name="Bat" instance=ExtResource("1_2jgus")]
+resource = ExtResource("2_0wlkj")

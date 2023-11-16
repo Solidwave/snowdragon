@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://ncvflipxvtek" path="res://Sprites/Joystick/joyring.png" id="3_71f07"]
 [ext_resource type="Script" path="res://Scenes/Joystick/Knob.gd" id="3_g2a1y"]
 
-[node name="Joystick" type="Node2D"]
+[node name="Joystick" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_3ngrb")
 
 [node name="Knob" type="Sprite2D" parent="."]

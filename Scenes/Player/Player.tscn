@@ -24,12 +24,29 @@ position = Vector2(270, 480)
 scale = Vector2(10, 10)
 collision_mask = 3
 script = ExtResource("1_0kf8f")
-joystick = NodePath("Camera2D/Joystick")
+joystick = NodePath("CanvasLayer/MarginContainer/Joystick")
 hitbox = NodePath("HitboxComponent")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("8_yb0ip")]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 200
+
+[node name="HealthBar" parent="CanvasLayer/MarginContainer" instance=ExtResource("8_yb0ip")]
+layout_mode = 2
+
+[node name="Joystick" parent="CanvasLayer/MarginContainer" instance=ExtResource("3_w4dpy")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
@@ -41,7 +58,7 @@ shape = SubResource("RectangleShape2D_nias7")
 [node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("4_qyxpy")
 maxHealth = 100
-healthBar = NodePath("../CanvasLayer/HealthBar")
+healthBar = NodePath("../CanvasLayer/MarginContainer/HealthBar")
 
 [node name="KnockbackComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_32oy3")]
 target = NodePath("..")
@@ -56,11 +73,6 @@ shape = SubResource("RectangleShape2D_aflk8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.1, 0.1)
-
-[node name="Joystick" parent="Camera2D" instance=ExtResource("3_w4dpy")]
-z_index = 1
-position = Vector2(0, 280)
-scale = Vector2(0.7, 0.7)
 
 [node name="Weapon" parent="." instance=ExtResource("6_abhhd")]
 rotation = 1.91463
