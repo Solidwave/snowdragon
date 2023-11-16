@@ -23,11 +23,26 @@ func move(_delta):
 		velocity = Vector2.ZERO
 	
 func processDrop(drop: Drop):
-	print("Look a", drop.res)
 	match drop.res.type:
 		'powerup' :
 			var powerup = drop.res.scene.instantiate()
 			add_child(powerup)
+		'healing':
+			var healQuantity = drop.res.healthValue
+			
+			var healthComponent : HealthComponent = get_node("HealthComponent")
+			if 	healthComponent :
+				var newHealth = healthComponent.health + healQuantity
+				
+				print(healthComponent.health)
+				
+				healthComponent.health = min(healthComponent.maxHealth,newHealth)
+				
+				print(healthComponent.health)
+				
+				
+				healthComponent.health_changed.emit()
+				
 	
 	drop.queue_free()
 	

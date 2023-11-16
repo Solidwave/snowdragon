@@ -14,3 +14,4 @@ texture = SubResource("AtlasTexture_ko82q")
 type = "powerup"
 id = 0
 scene = ExtResource("1_5rn55")
+healValue = 0

@@ -8,6 +8,8 @@ class_name HealthComponent
 
 @export var invincible := false
 
+signal health_changed
+
 var health : float
 
 
@@ -22,6 +24,8 @@ func _ready():
 		
 		healthBar.value = maxHealth
 		
+	health_changed.connect(on_health_changed)
+		
 func updateBar(_maxHealth,_value):
 	print(_maxHealth,_value, healthBar)
 	if healthBar:
@@ -29,6 +33,11 @@ func updateBar(_maxHealth,_value):
 			healthBar.max_value = _maxHealth
 		if _value:
 			healthBar.value = _value
+			
+func on_health_changed():
+	print('health_changed')
+	if healthBar:
+		healthBar.value = health
 		
 	
 func damage(attack: Attack):

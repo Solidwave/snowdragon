@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7smdfn5ly42y"]
+[gd_scene load_steps=16 format=3 uid="uid://b7smdfn5ly42y"]
 
 [ext_resource type="Script" path="res://Scenes/Drop/Drop.gd" id="1_1ns8f"]
 [ext_resource type="Resource" uid="uid://b20m8hxdbg5fy" path="res://Resources/Istances/Items/AttackSpeedPU.tres" id="2_q7tng"]
@@ -24,6 +24,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_bduhe"]
 resource_name = "dropped"
@@ -42,17 +54,57 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -5)]
 }
 
+[sub_resource type="Animation" id="Animation_fogpb"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ntwj"]
 _data = {
 "RESET": SubResource("Animation_mmymr"),
+"appear": SubResource("Animation_fogpb"),
 "dropped": SubResource("Animation_bduhe")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8313t"]
 radius = 50.0
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ygp8"]
+animation = &"appear"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oioe0"]
+animation = &"dropped"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ns6wc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_10na7"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fmj40"]
+states/Start/position = Vector2(183, 115)
+states/appear/node = SubResource("AnimationNodeAnimation_1ygp8")
+states/appear/position = Vector2(326, 115)
+states/dropped/node = SubResource("AnimationNodeAnimation_oioe0")
+states/dropped/position = Vector2(461, 112)
+transitions = ["Start", "appear", SubResource("AnimationNodeStateMachineTransition_ns6wc"), "appear", "dropped", SubResource("AnimationNodeStateMachineTransition_10na7")]
+
 [node name="Drop" type="RigidBody2D" groups=["Drop"]]
 texture_filter = 1
+collision_layer = 2
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_1ns8f")
 res = ExtResource("2_q7tng")
@@ -72,5 +124,10 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8313t")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_fmj40")
+anim_player = NodePath("../AnimationPlayer")
+active = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

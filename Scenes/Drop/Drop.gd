@@ -7,13 +7,14 @@ class_name Drop
 
 var player : Player
 
+var speed = 100
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(sprite_2d, res.texture)
 	sprite_2d.set_texture(res.texture)
 	
-
+	continuous_cd = RigidBody2D.CCD_MODE_DISABLED
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -23,7 +24,7 @@ func _physics_process(delta):
 	if player:
 		var direction = (player.global_position - global_position).normalized()
 		
-		var speed = 100 + 10/direction.length()
+		speed += 100
 
 		global_position += direction * speed * delta
 

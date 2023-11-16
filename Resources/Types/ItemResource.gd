@@ -10,3 +10,4 @@ class_name ItemResource
 
 @export var scene : PackedScene
 
+@export var healthValue : int

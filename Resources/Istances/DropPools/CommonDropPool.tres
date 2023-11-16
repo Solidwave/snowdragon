@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("1_ardtm")
 items = Array[Resource("res://Resources/Types/ItemResource.gd")]([ExtResource("1_uus8e")])
-chances = Array[float]([0.2])
+chances = Array[float]([1.0])
