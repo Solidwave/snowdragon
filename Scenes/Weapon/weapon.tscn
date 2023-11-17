@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkvm4iielmrsg"]
+[gd_scene load_steps=10 format=3 uid="uid://bkvm4iielmrsg"]
 
 [ext_resource type="Script" path="res://Scenes/Weapon/weapon.gd" id="1_y4ykj"]
 [ext_resource type="Texture2D" uid="uid://p3x5w8tec7i7" path="res://Textures/Weapons/Swords/Iicon_32_01.png" id="2_0jaos"]
@@ -71,8 +71,6 @@ _data = {
 "attack": SubResource("Animation_3i35q")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y5ty3"]
-
 [node name="Weapon" type="Node2D" groups=["Weapon"]]
 script = ExtResource("1_y4ykj")
 
@@ -96,12 +94,6 @@ libraries = {
 "": SubResource("AnimationLibrary_i8kf0")
 }
 
-[node name="TargetingArea" type="Area2D" parent="."]
-scale = Vector2(2, 2)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingArea"]
-shape = SubResource("CircleShape2D_y5ty3")
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("2_j4hw2")
 initialState = NodePath("WeaponIdle")
@@ -112,6 +104,9 @@ script = ExtResource("3_w2yh2")
 [node name="WeaponAttacking" type="Node" parent="StateMachine"]
 script = ExtResource("4_ilhi6")
 
+[node name="DetectTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
 [connection signal="area_entered" from="Pivot" to="StateMachine/WeaponAttacking" method="_on_pivot_area_entered"]
-[connection signal="area_entered" from="TargetingArea" to="StateMachine/WeaponIdle" method="_on_targeting_area_area_entered"]
-[connection signal="area_exited" from="TargetingArea" to="StateMachine/WeaponAttacking" method="_on_targeting_area_area_exited"]
+[connection signal="timeout" from="DetectTimer" to="StateMachine/WeaponIdle" method="_on_detect_timer_timeout"]

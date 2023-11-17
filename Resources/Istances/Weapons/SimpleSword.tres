@@ -9,5 +9,5 @@ texture = ExtResource("3_cnclc")
 damage = 10
 knockback = 10
 attackAnimation = "attack"
-attackRange = 10
+attackRange = 500
 targetGroup = "Enemy"

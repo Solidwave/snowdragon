@@ -10,11 +10,11 @@ size = Vector2(13.4, 12.9)
 size = Vector2(13.4, 12.8)
 
 [node name="Skeleton" instance=ExtResource("1_y55d8")]
+scale = Vector2(3, 3)
 resource = ExtResource("2_tav51")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0.100001, 0.55)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_b5its")
 
 [node name="Sprite2D" parent="." index="1"]
@@ -22,7 +22,6 @@ scale = Vector2(1, 1)
 
 [node name="CollisionShape2D2" parent="HitboxComponent" index="0"]
 position = Vector2(0.1, 0.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_85ro0")
 
 [node name="ProgressBar" parent="." index="6"]

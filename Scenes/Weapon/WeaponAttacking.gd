@@ -15,13 +15,13 @@ func Exit():
 func Update(_delta):
 	if weapon.target == null:
 		Transitioned.emit(self, "weaponidle")
-	else:	
+		return
+	if weapon.target.global_position.distance_to(weapon.global_position) > weapon.res.attackRange:
+		weapon.target = null
 		# slowly changes the rotation to face the angle
+	if weapon.target != null:
 		weapon.look_at(weapon.target.global_position)
 
-func _on_targeting_area_area_exited(area):
-	if area == weapon.target:
-		Transitioned.emit(self, "weaponidle")
 
 
 func _on_pivot_area_entered(area):

@@ -14,7 +14,7 @@ class_name Weapon
 
 @onready var animation_player = $AnimationPlayer
 
-var target : Area2D
+var target : HitboxComponent
 
 var attack : Attack
 
