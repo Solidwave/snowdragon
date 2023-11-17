@@ -72,6 +72,7 @@ knockback_component = NodePath("../KnockbackComponent")
 shape = SubResource("RectangleShape2D_aflk8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 10)
 scale = Vector2(0.1, 0.1)
 
 [node name="Weapon" parent="." instance=ExtResource("6_abhhd")]
