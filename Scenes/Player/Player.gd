@@ -11,6 +11,8 @@ class_name Player
 
 var enemyCollision : KinematicCollision2D = null
 
+func _ready():
+	set_process_input(true)
 func _physics_process(_delta):
 	move_and_slide()
 	
@@ -46,3 +48,5 @@ func processDrop(drop: Drop):
 	
 	drop.queue_free()
 	
+
+

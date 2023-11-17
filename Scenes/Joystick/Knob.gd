@@ -25,6 +25,8 @@ func _process(delta):
 	else:
 		global_position = lerp(global_position, parent.global_position, delta*10)
 		parent.posVector = Vector2.ZERO
+		
+		
 
 func calulateVector():
 	if abs((global_position.x - parent.global_position.x)) >= deadzone:
