@@ -12,6 +12,7 @@ signal health_changed
 
 var health : float
 
+signal im_dead
 
 func _ready():
 	health = maxHealth
@@ -27,7 +28,6 @@ func _ready():
 	health_changed.connect(on_health_changed)
 		
 func updateBar(_maxHealth,_value):
-	print(_maxHealth,_value, healthBar)
 	if healthBar:
 		if _maxHealth:
 			healthBar.max_value = _maxHealth
@@ -35,11 +35,10 @@ func updateBar(_maxHealth,_value):
 			healthBar.value = _value
 			
 func on_health_changed():
-	print('health_changed')
 	if healthBar:
 		healthBar.value = health
 		
-	
+	print('healthchanged')
 func damage(attack: Attack):
 	if invincible:
 		return
@@ -47,6 +46,11 @@ func damage(attack: Attack):
 	
 	if 	healthBar:
 		healthBar.value = health
+		
+	health_changed.emit()
+	
+	if health <= 0:
+		im_dead.emit()
 	
 	if health <= 0 && get_parent().name != "Player":
 		get_parent().queue_free()

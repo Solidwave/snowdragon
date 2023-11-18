@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=7 format=3 uid="uid://b47skh4k406fw"]
+
+[ext_resource type="Resource" uid="uid://dn6a8eym1u33o" path="res://Resources/Istances/Items/MovementSpeed.tres" id="1_7448p"]
+[ext_resource type="Script" path="res://Resources/Types/EnemyResource.gd" id="1_p2web"]
+[ext_resource type="Script" path="res://Resources/Types/DropPool.gd" id="2_yp6ho"]
+[ext_resource type="Texture2D" uid="uid://bcrlt6kmws27d" path="res://Textures/Enemies/Slkime/slimeblue.png" id="4_6sqtx"]
+
+[sub_resource type="Resource" id="Resource_6aoyx"]
+script = ExtResource("2_yp6ho")
+items = Array[Resource("res://Resources/Types/ItemResource.gd")]([ExtResource("1_7448p")])
+chances = Array[float]([0.6])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn1xq"]
+atlas = ExtResource("4_6sqtx")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_p2web")
+texture = SubResource("AtlasTexture_tn1xq")
+type = "monster"
+id = 3
+attack = 15
+knockback = 15
+speed = 30
+detectRange = 300
+maxHealth = 50
+variant = "normal"
+stunnedAnimation = ""
+idleAnimation = ""
+chaseAnimation = ""
+dropPool = SubResource("Resource_6aoyx")

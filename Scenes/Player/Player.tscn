@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bffvn3ulcjrlc"]
+[gd_scene load_steps=17 format=3 uid="uid://bffvn3ulcjrlc"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_0kf8f"]
 [ext_resource type="Texture2D" uid="uid://db83ugra0srar" path="res://icon.svg" id="2_ajv2h"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/State/StateMachine.gd" id="9_st76y"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerIdle.gd" id="10_q2e20"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerStunned.gd" id="11_w6vsv"]
+[ext_resource type="PackedScene" uid="uid://cxgf0mxvi56da" path="res://Scenes/PowerUps/MovementSpeed/movement_speed.tscn" id="14_anhcd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nias7"]
 size = Vector2(6.4, 6.4)
@@ -112,5 +113,7 @@ script = ExtResource("10_q2e20")
 
 [node name="PlayerStunned" type="Node" parent="StateMachine"]
 script = ExtResource("11_w6vsv")
+
+[node name="MovementSpeed" parent="." instance=ExtResource("14_anhcd")]
 
 [connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]

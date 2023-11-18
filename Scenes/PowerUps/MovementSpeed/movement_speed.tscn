@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxgf0mxvi56da"]
+
+[ext_resource type="Script" path="res://Scenes/PowerUps/MovementSpeed/MovementSpeed.gd" id="1_cccpr"]
+
+[node name="MovementSpeed" type="Node"]
+script = ExtResource("1_cccpr")

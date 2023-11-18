@@ -6,6 +6,8 @@ class_name Player
 
 @export var hitbox : HitboxComponent
 
+@onready var healthComponent : HealthComponent = $"HealthComponent"
+
 @export var speed = 300
 @onready var weapon = $Weapon
 
