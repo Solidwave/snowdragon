@@ -2,7 +2,7 @@ extends State
 
 class_name PlayerIdle
 
-@onready var player = $"../.."
+@onready var player : Player = $"../.."
 
 func Enter():
 	pass
@@ -16,6 +16,10 @@ func Exit():
 #
 func PhysicsUpdate(delta: float):
 	player.move(delta)
+	
+	player.animation_tree.set("parameters/MainBlend/blend_amount", min(player.velocity.length()/player.speed, 1))
+	
+	
 	
 	for i in player.get_slide_collision_count():
 		var collision = player.get_slide_collision(i)

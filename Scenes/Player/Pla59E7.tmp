@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bffvn3ulcjrlc"]
+[gd_scene load_steps=29 format=3 uid="uid://bffvn3ulcjrlc"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_0kf8f"]
 [ext_resource type="Texture2D" uid="uid://db83ugra0srar" path="res://icon.svg" id="2_ajv2h"]
@@ -179,62 +179,6 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-3.8, -3)]
-}
-
-[sub_resource type="Animation" id="Animation_tcqhs"]
-resource_name = "flip_left"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rig:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.15, 0.15), Vector2(-0.15, 0.15)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Rig:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-3.8, -3), Vector2(3.8, -3)]
-}
-
-[sub_resource type="Animation" id="Animation_4qx63"]
-resource_name = "flip_right"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rig:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-0.15, 0.15), Vector2(0.15, 0.15)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Rig:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(3.8, -3), Vector2(-3.8, -3)]
 }
 
 [sub_resource type="Animation" id="Animation_v8wnc"]
@@ -598,6 +542,62 @@ tracks/8/keys = {
 "values": [-0.031417]
 }
 
+[sub_resource type="Animation" id="Animation_tcqhs"]
+resource_name = "flip_left"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.15, 0.15), Vector2(-0.15, 0.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rig:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-3.8, -3), Vector2(3.8, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_4qx63"]
+resource_name = "flip_right"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.15, 0.15), Vector2(0.15, 0.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rig:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3.8, -3), Vector2(-3.8, -3)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tqc38"]
 _data = {
 "RESET": SubResource("Animation_rckp2"),
@@ -608,57 +608,23 @@ _data = {
 "walk": SubResource("Animation_qiay2")
 }
 
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_1n860"]
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5vbt6"]
 animation = &"idle"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_nq8xf"]
-sync = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ecxka"]
 animation = &"run"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y70cx"]
-animation = &"flip_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w8vat"]
-animation = &"flip_right"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7cmo5"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yw8m0"]
-switch_mode = 1
-advance_mode = 2
-advance_condition = &"lookleft"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8yfgq"]
-switch_mode = 1
-advance_mode = 2
-advance_condition = &"lookright"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ciqvv"]
-states/flip_left/node = SubResource("AnimationNodeAnimation_y70cx")
-states/flip_left/position = Vector2(546, 132)
-states/flip_right/node = SubResource("AnimationNodeAnimation_w8vat")
-states/flip_right/position = Vector2(315, 132)
-transitions = ["Start", "flip_right", SubResource("AnimationNodeStateMachineTransition_7cmo5"), "flip_right", "flip_left", SubResource("AnimationNodeStateMachineTransition_yw8m0"), "flip_left", "flip_right", SubResource("AnimationNodeStateMachineTransition_8yfgq")]
-
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1ncie"]
-graph_offset = Vector2(-689.253, -28.6068)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_1n860")
-nodes/Add2/position = Vector2(120, 100)
+graph_offset = Vector2(-677, -103)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_5vbt6")
 nodes/Idle/position = Vector2(-220, 0)
 nodes/MainBlend/node = SubResource("AnimationNodeBlend2_nq8xf")
-nodes/MainBlend/position = Vector2(-80, 100)
+nodes/MainBlend/position = Vector2(60, 120)
 nodes/Run/node = SubResource("AnimationNodeAnimation_ecxka")
-nodes/Run/position = Vector2(-300, 200)
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_ciqvv")
-nodes/StateMachine/position = Vector2(-100, 320)
-nodes/output/position = Vector2(440, 180)
-node_connections = [&"output", 0, &"Add2", &"MainBlend", 0, &"Idle", &"MainBlend", 1, &"Run", &"Add2", 0, &"StateMachine", &"Add2", 1, &"MainBlend"]
+nodes/Run/position = Vector2(-220, 160)
+node_connections = [&"output", 0, &"MainBlend", &"MainBlend", 0, &"Idle", &"MainBlend", 1, &"Run"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("joystick", "hitbox") groups=["Player"]]
 position = Vector2(270, 480)
@@ -781,19 +747,19 @@ rest = Transform2D(1, 0, 0, 1, -6.2, -7.7)
 [node name="arm_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
 position = Vector2(-10.1, -10.1)
 rotation = 0.638914
-scale = Vector2(0.999998, 0.999998)
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -10.1, -10.1)
 
 [node name="hand_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_right"]
 position = Vector2(-0.200001, 10.9)
 rotation = -1.54568
-scale = Vector2(0.758755, 0.964052)
+scale = Vector2(0.758755, 0.964051)
 rest = Transform2D(0.758381, -0.0238339, 0.0302826, 0.963575, -0.200001, 10.9)
 
 [node name="arm_left" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
 position = Vector2(8.1, -11.9)
 rotation = -0.568998
-scale = Vector2(0.999997, 0.999997)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 8.1, -11.9)
 
 [node name="hand_left" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_left"]
@@ -805,7 +771,7 @@ rest = Transform2D(0.156606, 0.825828, -0.818227, 0.155165, -0.200001, 10.8)
 [node name="leg_right" type="Bone2D" parent="Rig/Skeleton2D/hip"]
 position = Vector2(-5.7, 2.60001)
 rotation = -0.484907
-scale = Vector2(0.999997, 0.999997)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, -5.7, 2.60001)
 
 [node name="calf_right" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_right"]
@@ -823,7 +789,7 @@ rest = Transform2D(0.137473, -0.709581, 0.609683, 0.118119, 15.1732, 3.02631)
 [node name="leg_left" type="Bone2D" parent="Rig/Skeleton2D/hip"]
 position = Vector2(4.7, 1.30001)
 rotation = 0.614597
-scale = Vector2(0.999998, 0.999998)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 4.7, 1.30001)
 
 [node name="calf_lleft" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_left"]
@@ -917,10 +883,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_1ncie")
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/Add2/add_amount = 1.0
-parameters/MainBlend/blend_amount = 0.73
-parameters/StateMachine/conditions/lookleft = false
-parameters/StateMachine/conditions/lookright = false
+parameters/MainBlend/blend_amount = 1.0
 
 [connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]
