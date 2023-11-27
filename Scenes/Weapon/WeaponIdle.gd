@@ -7,13 +7,13 @@ extends State
 func Enter():
 	animation_player.stop()
 	
-func Update(_delta):
-	var closestEnemy = find_closest_enemy()
-	
-	if 	closestEnemy :
-		weapon.target = closestEnemy.get_node("HitboxComponent")
-		
-		Transitioned.emit(self,"weaponattacking")
+#func Update(_delta):
+#	var closestEnemy = find_closest_enemy()
+#
+#	if 	closestEnemy :
+#		weapon.target = closestEnemy.get_node("HitboxComponent")
+#
+#		Transitioned.emit(self,"weaponattacking")
 
 
 func find_closest_enemy() -> CharacterBody2D:
@@ -24,7 +24,7 @@ func find_closest_enemy() -> CharacterBody2D:
 	var closest_distance = weapon.res.attackRange
 
 	for enemy in enemies:
-		var distance = enemy.global_position.distance_to(weapon.global_position)
+		var distance = enemy.global_position.distance_to(weapon.pivot.global_position)
 		if distance < closest_distance:
 			closest_enemy = enemy
 			

@@ -646,7 +646,7 @@ states/flip_right/position = Vector2(315, 132)
 transitions = ["Start", "flip_right", SubResource("AnimationNodeStateMachineTransition_7cmo5"), "flip_right", "flip_left", SubResource("AnimationNodeStateMachineTransition_yw8m0"), "flip_left", "flip_right", SubResource("AnimationNodeStateMachineTransition_8yfgq")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1ncie"]
-graph_offset = Vector2(-689.253, -28.6068)
+graph_offset = Vector2(-541, 135)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_1n860")
 nodes/Add2/position = Vector2(120, 100)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_5vbt6")
@@ -658,10 +658,10 @@ nodes/Run/position = Vector2(-300, 200)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_ciqvv")
 nodes/StateMachine/position = Vector2(-100, 320)
 nodes/output/position = Vector2(440, 180)
-node_connections = [&"output", 0, &"Add2", &"MainBlend", 0, &"Idle", &"MainBlend", 1, &"Run", &"Add2", 0, &"StateMachine", &"Add2", 1, &"MainBlend"]
+node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"StateMachine", &"Add2", 1, &"MainBlend", &"MainBlend", 0, &"Idle", &"MainBlend", 1, &"Run"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("joystick", "hitbox") groups=["Player"]]
-position = Vector2(270, 480)
+position = Vector2(256, 500)
 scale = Vector2(10, 10)
 collision_mask = 3
 script = ExtResource("1_0kf8f")
@@ -718,6 +718,7 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_ajv2h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_nias7")
 
 [node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
@@ -725,10 +726,18 @@ script = ExtResource("4_qyxpy")
 maxHealth = 100
 healthBar = NodePath("../CanvasLayer/MarginContainer/VBoxContainer/HealthBar")
 
+[node name="Weapon" parent="." node_paths=PackedStringArray("pivot") instance=ExtResource("6_abhhd")]
+y_sort_enabled = false
+position = Vector2(3.7, -2.6)
+rotation = 0.0
+res = ExtResource("9_fkbqu")
+pivot = NodePath("../BodyCenter")
+
 [node name="KnockbackComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_32oy3")]
 target = NodePath("..")
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component", "knockback_component")]
+position = Vector2(0, -2)
 script = ExtResource("5_e4mg6")
 health_component = NodePath("../HealthComponent")
 knockback_component = NodePath("../KnockbackComponent")
@@ -739,10 +748,6 @@ shape = SubResource("RectangleShape2D_aflk8")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 10)
 scale = Vector2(0.1, 0.1)
-
-[node name="Weapon" parent="." instance=ExtResource("6_abhhd")]
-rotation = 1.91463
-res = ExtResource("9_fkbqu")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("9_st76y")
@@ -757,88 +762,12 @@ script = ExtResource("11_w6vsv")
 [node name="MovementSpeed" parent="." instance=ExtResource("14_anhcd")]
 
 [node name="Rig" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-3.8, -3)
 scale = Vector2(0.15, 0.15)
 
-[node name="Skeleton2D" type="Skeleton2D" parent="Rig"]
-
-[node name="hip" type="Bone2D" parent="Rig/Skeleton2D"]
-position = Vector2(25.2, 32.5)
-rest = Transform2D(1, 0, 0, 1, 25.2, 32.5)
-
-[node name="chest" type="Bone2D" parent="Rig/Skeleton2D/hip"]
-position = Vector2(0.0999985, -4.89999)
-rest = Transform2D(1, 0, 0, 1, 0.0999985, -4.89999)
-
-[node name="head" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
-position = Vector2(0.699997, -19.1)
-rest = Transform2D(1, 0, 0, 1, 0.699997, -19.1)
-
-[node name="jaw" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/head"]
-position = Vector2(-6.2, -7.7)
-rest = Transform2D(1, 0, 0, 1, -6.2, -7.7)
-
-[node name="arm_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
-position = Vector2(-10.1, -10.1)
-rotation = 0.638914
-scale = Vector2(0.999998, 0.999998)
-rest = Transform2D(1, 0, 0, 1, -10.1, -10.1)
-
-[node name="hand_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_right"]
-position = Vector2(-0.200001, 10.9)
-rotation = -1.54568
-scale = Vector2(0.758755, 0.964052)
-rest = Transform2D(0.758381, -0.0238339, 0.0302826, 0.963575, -0.200001, 10.9)
-
-[node name="arm_left" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
-position = Vector2(8.1, -11.9)
-rotation = -0.568998
-scale = Vector2(0.999997, 0.999997)
-rest = Transform2D(1, 0, 0, 1, 8.1, -11.9)
-
-[node name="hand_left" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_left"]
-position = Vector2(-0.200001, 10.8)
-rotation = 0.309529
-scale = Vector2(0.840545, 0.832809)
-rest = Transform2D(0.156606, 0.825828, -0.818227, 0.155165, -0.200001, 10.8)
-
-[node name="leg_right" type="Bone2D" parent="Rig/Skeleton2D/hip"]
-position = Vector2(-5.7, 2.60001)
-rotation = -0.484907
-scale = Vector2(0.999997, 0.999997)
-rest = Transform2D(1, 0, 0, 1, -5.7, 2.60001)
-
-[node name="calf_right" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_right"]
-position = Vector2(-3.2, 9.7)
-rotation = 3.08559
-scale = Vector2(0.840545, 0.832809)
-rest = Transform2D(0.156606, 0.825828, -0.818227, 0.155165, -3.2, 9.7)
-
-[node name="foot_right" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_right/calf_right"]
-position = Vector2(15.1732, 3.02631)
-rotation = -1.37943
-scale = Vector2(0.722775, 0.62102)
-rest = Transform2D(0.137473, -0.709581, 0.609683, 0.118119, 15.1732, 3.02631)
-
-[node name="leg_left" type="Bone2D" parent="Rig/Skeleton2D/hip"]
-position = Vector2(4.7, 1.30001)
-rotation = 0.614597
-scale = Vector2(0.999998, 0.999998)
-rest = Transform2D(1, 0, 0, 1, 4.7, 1.30001)
-
-[node name="calf_lleft" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_left"]
-position = Vector2(-2.60001, 9.00002)
-rotation = 2.65204
-scale = Vector2(0.840545, 0.832809)
-rest = Transform2D(0.156606, 0.825828, -0.818227, 0.155165, -2.60001, 9.00002)
-
-[node name="foot_left" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_left/calf_lleft"]
-position = Vector2(15.0402, 3.73414)
-rotation = -1.40433
-scale = Vector2(0.929679, 0.773656)
-rest = Transform2D(0.154046, -0.916827, 0.762961, 0.128193, 15.0402, 3.73414)
-
 [node name="Polygons" type="Node2D" parent="Rig"]
+position = Vector2(0, -34.6667)
 scale = Vector2(0.1, 0.1)
 
 [node name="arm_left" type="Polygon2D" parent="Rig/Polygons"]
@@ -900,6 +829,7 @@ bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 internal_vertex_count = 4
 
 [node name="arm_right" type="Polygon2D" parent="Rig/Polygons"]
+z_index = 1
 position = Vector2(87, 85.5)
 texture = ExtResource("15_4slor")
 skeleton = NodePath("../../Skeleton2D")
@@ -908,6 +838,85 @@ uv = PackedVector2Array(81.4815, 15.4321, 133.951, 42.5926, 124.074, 98.1481, 98
 polygons = [PackedInt32Array(20, 0, 1, 2, 3, 21, 18, 19), PackedInt32Array(18, 17, 21), PackedInt32Array(21, 3, 4), PackedInt32Array(17, 22, 21), PackedInt32Array(22, 4, 21), PackedInt32Array(22, 5, 4), PackedInt32Array(17, 16, 22), PackedInt32Array(16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 22)]
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest/head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest/head/jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest/arm_right", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5), "hip/chest/arm_right/hand_right", PackedFloat32Array(0, 0, 0, 0, 0, 1, 0.5, 1, 0.5, 0.5, 0.5, 0.5, 1, 1, 0.5, 1, 0.5, 0, 0, 0, 0, 0, 0), "hip/chest/arm_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest/arm_left/hand_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_right/and_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_right/and_right/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_left/calf_lleft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_left/calf_lleft/foot_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 internal_vertex_count = 2
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Rig"]
+position = Vector2(3.33333, -34)
+
+[node name="hip" type="Bone2D" parent="Rig/Skeleton2D"]
+position = Vector2(25.2, 32.5)
+rest = Transform2D(1, 0, 0, 1, 25.2, 32.5)
+
+[node name="chest" type="Bone2D" parent="Rig/Skeleton2D/hip"]
+position = Vector2(0.0999985, -4.89999)
+rest = Transform2D(1, 0, 0, 1, 0.0999985, -4.89999)
+
+[node name="head" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
+position = Vector2(0.699997, -19.1)
+rest = Transform2D(1, 0, 0, 1, 0.699997, -19.1)
+
+[node name="jaw" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/head"]
+position = Vector2(-6.2, -7.7)
+rest = Transform2D(1, 0, 0, 1, -6.2, -7.7)
+
+[node name="arm_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
+position = Vector2(-10.1, -10.1)
+rotation = 0.638914
+scale = Vector2(1, 1)
+rest = Transform2D(1, 0, 0, 1, -10.1, -10.1)
+
+[node name="hand_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_right"]
+position = Vector2(-0.200001, 10.9)
+rotation = -1.54568
+scale = Vector2(0.758755, 0.964051)
+rest = Transform2D(0.758381, -0.0238339, 0.0302826, 0.963575, -0.200001, 10.9)
+
+[node name="arm_left" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
+position = Vector2(8.1, -11.9)
+rotation = -0.568998
+scale = Vector2(1, 1)
+rest = Transform2D(1, 0, 0, 1, 8.1, -11.9)
+
+[node name="hand_left" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_left"]
+position = Vector2(-0.200001, 10.8)
+rotation = 0.309529
+scale = Vector2(0.840546, 0.832809)
+rest = Transform2D(0.156606, 0.825828, -0.818227, 0.155165, -0.200001, 10.8)
+
+[node name="leg_right" type="Bone2D" parent="Rig/Skeleton2D/hip"]
+position = Vector2(-5.7, 2.60001)
+rotation = -0.484907
+scale = Vector2(1, 1)
+rest = Transform2D(1, 0, 0, 1, -5.7, 2.60001)
+
+[node name="calf_right" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_right"]
+position = Vector2(-3.2, 9.7)
+rotation = 3.08559
+scale = Vector2(0.840546, 0.83281)
+rest = Transform2D(0.156606, 0.825828, -0.818227, 0.155165, -3.2, 9.7)
+
+[node name="foot_right" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_right/calf_right"]
+position = Vector2(15.1732, 3.02631)
+rotation = -1.37943
+scale = Vector2(0.722775, 0.62102)
+rest = Transform2D(0.137473, -0.709581, 0.609683, 0.118119, 15.1732, 3.02631)
+
+[node name="leg_left" type="Bone2D" parent="Rig/Skeleton2D/hip"]
+position = Vector2(4.7, 1.30001)
+rotation = 0.614597
+scale = Vector2(1, 1)
+rest = Transform2D(1, 0, 0, 1, 4.7, 1.30001)
+
+[node name="calf_lleft" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_left"]
+position = Vector2(-2.60001, 9.00002)
+rotation = 2.65204
+scale = Vector2(0.840546, 0.832809)
+rest = Transform2D(0.156606, 0.825828, -0.818227, 0.155165, -2.60001, 9.00002)
+
+[node name="foot_left" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_left/calf_lleft"]
+position = Vector2(15.0402, 3.73414)
+rotation = -1.40433
+scale = Vector2(0.929678, 0.773656)
+rest = Transform2D(0.154046, -0.916827, 0.762961, 0.128193, 15.0402, 3.73414)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -922,5 +931,8 @@ parameters/Add2/add_amount = 1.0
 parameters/MainBlend/blend_amount = 0.73
 parameters/StateMachine/conditions/lookleft = false
 parameters/StateMachine/conditions/lookright = false
+
+[node name="BodyCenter" type="Node2D" parent="."]
+position = Vector2(0.499999, -4.7)
 
 [connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]
