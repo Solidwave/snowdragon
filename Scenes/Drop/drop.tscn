@@ -126,8 +126,10 @@ libraries = {
 shape = SubResource("CircleShape2D_8313t")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ntwj")
+}
 tree_root = SubResource("AnimationNodeStateMachine_fmj40")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -658,7 +658,7 @@ nodes/Run/position = Vector2(-300, 200)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_ciqvv")
 nodes/StateMachine/position = Vector2(-100, 320)
 nodes/output/position = Vector2(440, 180)
-node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"StateMachine", &"Add2", 1, &"MainBlend", &"MainBlend", 0, &"Idle", &"MainBlend", 1, &"Run"]
+node_connections = [&"Add2", 0, &"StateMachine", &"Add2", 1, &"MainBlend", &"MainBlend", 0, &"Idle", &"MainBlend", 1, &"Run", &"output", 0, &"Add2"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("joystick", "hitbox") groups=["Player"]]
 position = Vector2(256, 500)
@@ -861,7 +861,6 @@ rest = Transform2D(1, 0, 0, 1, -6.2, -7.7)
 [node name="arm_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
 position = Vector2(-10.1, -10.1)
 rotation = 0.638914
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -10.1, -10.1)
 
 [node name="hand_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_right"]
@@ -873,7 +872,6 @@ rest = Transform2D(0.758381, -0.0238339, 0.0302826, 0.963575, -0.200001, 10.9)
 [node name="arm_left" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
 position = Vector2(8.1, -11.9)
 rotation = -0.568998
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 8.1, -11.9)
 
 [node name="hand_left" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_left"]
@@ -885,7 +883,6 @@ rest = Transform2D(0.156606, 0.825828, -0.818227, 0.155165, -0.200001, 10.8)
 [node name="leg_right" type="Bone2D" parent="Rig/Skeleton2D/hip"]
 position = Vector2(-5.7, 2.60001)
 rotation = -0.484907
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -5.7, 2.60001)
 
 [node name="calf_right" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_right"]
@@ -903,7 +900,6 @@ rest = Transform2D(0.137473, -0.709581, 0.609683, 0.118119, 15.1732, 3.02631)
 [node name="leg_left" type="Bone2D" parent="Rig/Skeleton2D/hip"]
 position = Vector2(4.7, 1.30001)
 rotation = 0.614597
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 4.7, 1.30001)
 
 [node name="calf_lleft" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_left"]
@@ -924,9 +920,11 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tqc38")
+}
 tree_root = SubResource("AnimationNodeBlendTree_1ncie")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/Add2/add_amount = 1.0
 parameters/MainBlend/blend_amount = 0.73
 parameters/StateMachine/conditions/lookleft = false
