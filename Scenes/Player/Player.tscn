@@ -17,10 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://d4nwe8gv3w5u0" path="res://Textures/skeletons/gBot_pieces.png" id="15_4slor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nias7"]
-size = Vector2(6.4, 6.4)
+size = Vector2(6.4, 2.6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aflk8"]
-size = Vector2(6.4, 6.4)
+size = Vector2(6.4, 13.1)
 
 [sub_resource type="Animation" id="Animation_rckp2"]
 length = 0.001
@@ -718,7 +718,8 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_ajv2h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -0.0999985)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nias7")
 
 [node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
@@ -743,6 +744,8 @@ health_component = NodePath("../HealthComponent")
 knockback_component = NodePath("../KnockbackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -3.35)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_aflk8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -762,7 +765,6 @@ script = ExtResource("11_w6vsv")
 [node name="MovementSpeed" parent="." instance=ExtResource("14_anhcd")]
 
 [node name="Rig" type="Node2D" parent="."]
-y_sort_enabled = true
 position = Vector2(-3.8, -3)
 scale = Vector2(0.15, 0.15)
 
@@ -829,7 +831,6 @@ bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 internal_vertex_count = 4
 
 [node name="arm_right" type="Polygon2D" parent="Rig/Polygons"]
-z_index = 1
 position = Vector2(87, 85.5)
 texture = ExtResource("15_4slor")
 skeleton = NodePath("../../Skeleton2D")
@@ -861,6 +862,7 @@ rest = Transform2D(1, 0, 0, 1, -6.2, -7.7)
 [node name="arm_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
 position = Vector2(-10.1, -10.1)
 rotation = 0.638914
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -10.1, -10.1)
 
 [node name="hand_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_right"]
@@ -872,6 +874,7 @@ rest = Transform2D(0.758381, -0.0238339, 0.0302826, 0.963575, -0.200001, 10.9)
 [node name="arm_left" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
 position = Vector2(8.1, -11.9)
 rotation = -0.568998
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 8.1, -11.9)
 
 [node name="hand_left" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_left"]
@@ -883,6 +886,7 @@ rest = Transform2D(0.156606, 0.825828, -0.818227, 0.155165, -0.200001, 10.8)
 [node name="leg_right" type="Bone2D" parent="Rig/Skeleton2D/hip"]
 position = Vector2(-5.7, 2.60001)
 rotation = -0.484907
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, -5.7, 2.60001)
 
 [node name="calf_right" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_right"]
@@ -900,6 +904,7 @@ rest = Transform2D(0.137473, -0.709581, 0.609683, 0.118119, 15.1732, 3.02631)
 [node name="leg_left" type="Bone2D" parent="Rig/Skeleton2D/hip"]
 position = Vector2(4.7, 1.30001)
 rotation = 0.614597
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 4.7, 1.30001)
 
 [node name="calf_lleft" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_left"]
