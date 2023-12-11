@@ -17,9 +17,6 @@ resource = ExtResource("2_tav51")
 position = Vector2(0.100001, 0.55)
 shape = SubResource("RectangleShape2D_b5its")
 
-[node name="Sprite2D" parent="." index="1"]
-scale = Vector2(1, 1)
-
 [node name="CollisionShape2D2" parent="HitboxComponent" index="0"]
 position = Vector2(0.1, 0.5)
 shape = SubResource("RectangleShape2D_85ro0")

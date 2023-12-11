@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxsft1bnlaypf"]
+[gd_scene load_steps=12 format=3 uid="uid://dxsft1bnlaypf"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.gd" id="1_sgd0a"]
 [ext_resource type="Script" path="res://Scenes/Enemy/EnemyIdle.gd" id="2_f6odf"]
-[ext_resource type="Texture2D" uid="uid://bcc0oauhudgkc" path="res://Textures/Enemies/Bat/bat_atlas.tres" id="2_rxkao"]
 [ext_resource type="PackedScene" uid="uid://ncl1cayaqixr" path="res://Scenes/StateMachine/state_machine.tscn" id="4_3wtv5"]
 [ext_resource type="Script" path="res://Scenes/Enemy/EnemyChase.gd" id="4_18nnc"]
 [ext_resource type="PackedScene" uid="uid://b720lua30f1lc" path="res://Scenes/KnockbackComponent/knockback_component.tscn" id="4_hv0af"]
@@ -28,8 +27,6 @@ shape = SubResource("CircleShape2D_n5e4b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_rxkao")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("healthBar") instance=ExtResource("5_851v2")]
 maxHealth = 100

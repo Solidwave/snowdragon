@@ -1,7 +1,4 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bcc0oauhudgkc"]
-
-[ext_resource type="Texture2D" uid="uid://bcrlt6kmws27d" path="res://Textures/Enemies/Slkime/slimeblue.png" id="1_pn2c0"]
+[gd_resource type="AtlasTexture" format=3 uid="uid://bcc0oauhudgkc"]
 
 [resource]
-atlas = ExtResource("1_pn2c0")
 region = Rect2(0, 0, 32, 32)

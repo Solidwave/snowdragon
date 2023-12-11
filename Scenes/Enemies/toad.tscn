@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkdphmovyatgc"]
+
+[ext_resource type="PackedScene" uid="uid://dxsft1bnlaypf" path="res://Scenes/Enemy/Enemy.tscn" id="1_5fxys"]
+[ext_resource type="Script" path="res://Resources/Types/EnemyResource.gd" id="2_2qq50"]
+[ext_resource type="Texture2D" uid="uid://dyxvsejvfwr7l" path="res://Textures/Enemies/Mush/toad.png" id="2_ee6nt"]
+[ext_resource type="Resource" uid="uid://c7pdswjeave8b" path="res://Resources/Istances/DropPools/CommonDropPool.tres" id="2_mejme"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tp4r"]
+atlas = ExtResource("2_ee6nt")
+region = Rect2(0, 0, 992, 1024)
+
+[sub_resource type="Resource" id="Resource_ycsra"]
+script = ExtResource("2_2qq50")
+texture = SubResource("AtlasTexture_0tp4r")
+type = ""
+id = 4
+attack = 10
+knockback = 10
+speed = 100
+detectRange = 100
+maxHealth = 50
+variant = "normal"
+stunnedAnimation = ""
+idleAnimation = ""
+chaseAnimation = ""
+dropPool = ExtResource("2_mejme")
+
+[node name="Enemy" instance=ExtResource("1_5fxys")]
+resource = SubResource("Resource_ycsra")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.005, 0.005)
+texture = ExtResource("2_ee6nt")
