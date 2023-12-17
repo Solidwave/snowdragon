@@ -919,6 +919,7 @@ rest = Transform2D(0.154046, -0.916827, 0.762961, 0.128193, 15.0402, 3.73414)
 libraries = {
 "": SubResource("AnimationLibrary_tqc38")
 }
+playback_default_blend_time = 3.95
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
