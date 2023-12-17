@@ -25,7 +25,7 @@ func find_closest_enemy() -> CharacterBody2D:
 
 	for enemy in enemies:
 		var distance = enemy.global_position.distance_to(weapon.pivot.global_position)
-		if distance < closest_distance:
+		if distance < closest_distance and enemy is Enemy:
 			closest_enemy = enemy
 			
 			closest_distance = distance

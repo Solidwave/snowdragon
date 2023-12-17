@@ -27,5 +27,5 @@ maxHealth = 50
 variant = "normal"
 stunnedAnimation = ""
 idleAnimation = ""
-chaseAnimation = ""
+chaseAnimation = "move"
 dropPool = SubResource("Resource_kwem3")
