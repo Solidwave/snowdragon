@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bkvm4iielmrsg"]
 
 [ext_resource type="Script" path="res://Scenes/Weapon/weapon.gd" id="1_y4ykj"]
-[ext_resource type="Texture2D" uid="uid://p3x5w8tec7i7" path="res://Textures/Weapons/Swords/Iicon_32_01.png" id="2_0jaos"]
 [ext_resource type="Script" path="res://Scripts/State/StateMachine.gd" id="2_j4hw2"]
 [ext_resource type="Script" path="res://Scenes/Weapon/WeaponIdle.gd" id="3_w2yh2"]
 [ext_resource type="Script" path="res://Scenes/Weapon/WeaponAttacking.gd" id="4_ilhi6"]
+[ext_resource type="Texture2D" uid="uid://ckuj22rtck65g" path="res://Textures/Weapons/Swords/sword.png" id="5_ssoa7"]
 
 [sub_resource type="Animation" id="Animation_gjud0"]
 length = 0.001
@@ -150,10 +150,9 @@ shape = SubResource("RectangleShape2D_i4fus")
 [node name="WeaponSprite" type="Sprite2D" parent="Hitbox"]
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 1
-position = Vector2(0.000271124, 0.413362)
-rotation = -0.774503
-scale = Vector2(0.150143, 0.150143)
-texture = ExtResource("2_0jaos")
+position = Vector2(0.000259341, 0.41336)
+scale = Vector2(0.0101854, 0.0101854)
+texture = ExtResource("5_ssoa7")
 
 [connection signal="area_entered" from="." to="StateMachine/WeaponAttacking" method="_on_weapon_area_entered"]
 [connection signal="timeout" from="DetectTimer" to="StateMachine/WeaponIdle" method="_on_detect_timer_timeout"]

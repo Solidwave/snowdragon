@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://drf0ahlo7yn0h"]
 
 [ext_resource type="Script" path="res://Resources/Types/WeaponResource.gd" id="1_5erkg"]
-[ext_resource type="Texture2D" uid="uid://p3x5w8tec7i7" path="res://Textures/Weapons/Swords/Iicon_32_01.png" id="3_cnclc"]
+[ext_resource type="Texture2D" uid="uid://ckuj22rtck65g" path="res://Textures/Weapons/Swords/sword.png" id="2_1a8pb"]
 
 [resource]
 script = ExtResource("1_5erkg")
-texture = ExtResource("3_cnclc")
+texture = ExtResource("2_1a8pb")
 damage = 10
 knockback = 10
 attackAnimation = "attack"
