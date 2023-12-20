@@ -38,7 +38,6 @@ func on_health_changed():
 	if healthBar:
 		healthBar.value = health
 		
-	print('healthchanged')
 func damage(attack: Attack):
 	if invincible:
 		return

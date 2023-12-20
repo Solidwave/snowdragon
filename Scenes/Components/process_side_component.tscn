@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ffreofsu88m"]
+
+[ext_resource type="Script" path="res://Scenes/Player/ProcessSideComponent.gd" id="1_juala"]
+
+[node name="ProcessSideComponent" type="Node2D" node_paths=PackedStringArray("character2d", "animation_tree")]
+script = ExtResource("1_juala")
+character2d = NodePath("")
+animation_tree = NodePath("")

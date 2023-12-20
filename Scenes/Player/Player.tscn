@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bffvn3ulcjrlc"]
+[gd_scene load_steps=37 format=3 uid="uid://bffvn3ulcjrlc"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_0kf8f"]
 [ext_resource type="Texture2D" uid="uid://db83ugra0srar" path="res://icon.svg" id="2_ajv2h"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/PlayerStunned.gd" id="11_w6vsv"]
 [ext_resource type="PackedScene" uid="uid://cxgf0mxvi56da" path="res://Scenes/PowerUps/MovementSpeed/movement_speed.tscn" id="14_anhcd"]
 [ext_resource type="Texture2D" uid="uid://d4nwe8gv3w5u0" path="res://Textures/skeletons/gBot_pieces.png" id="15_4slor"]
+[ext_resource type="Script" path="res://Scenes/Player/ProcessSideComponent.gd" id="16_7hfwo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nias7"]
 size = Vector2(6.4, 2.6)
@@ -646,7 +647,6 @@ states/flip_right/position = Vector2(315, 132)
 transitions = ["Start", "flip_right", SubResource("AnimationNodeStateMachineTransition_7cmo5"), "flip_right", "flip_left", SubResource("AnimationNodeStateMachineTransition_yw8m0"), "flip_left", "flip_right", SubResource("AnimationNodeStateMachineTransition_8yfgq")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1ncie"]
-graph_offset = Vector2(-541, 135)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_1n860")
 nodes/Add2/position = Vector2(120, 100)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_5vbt6")
@@ -860,6 +860,7 @@ rest = Transform2D(1, 0, 0, 1, -6.2, -7.7)
 [node name="arm_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest"]
 position = Vector2(-10.1, -10.1)
 rotation = 0.638914
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -10.1, -10.1)
 
 [node name="hand_right" type="Bone2D" parent="Rig/Skeleton2D/hip/chest/arm_right"]
@@ -901,6 +902,7 @@ rest = Transform2D(0.137473, -0.709581, 0.609683, 0.118119, 15.1732, 3.02631)
 [node name="leg_left" type="Bone2D" parent="Rig/Skeleton2D/hip"]
 position = Vector2(4.7, 1.30001)
 rotation = 0.614597
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 4.7, 1.30001)
 
 [node name="calf_lleft" type="Bone2D" parent="Rig/Skeleton2D/hip/leg_left"]
@@ -934,5 +936,10 @@ parameters/StateMachine/conditions/lookright = false
 
 [node name="BodyCenter" type="Node2D" parent="."]
 position = Vector2(0.499999, -4.7)
+
+[node name="ProcessSideComponent" type="Node2D" parent="." node_paths=PackedStringArray("character2d", "animation_tree")]
+script = ExtResource("16_7hfwo")
+character2d = NodePath("..")
+animation_tree = NodePath("../AnimationTree")
 
 [connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]

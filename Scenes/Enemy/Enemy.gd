@@ -31,7 +31,7 @@ func _physics_process(_delta):
 		
 func drop():
 	var drop : ItemResource = resource.dropPool.drop();
-	print(drop)
+	
 	if drop:
 		var dropInstance = load("res://Scenes/Drop/drop.tscn").instantiate()
 		

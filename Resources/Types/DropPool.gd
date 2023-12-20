@@ -11,8 +11,6 @@ func drop():
 
 	var rand = randf()
 	
-	print(rand)
-
 	for i in range(items.size()):
 		if rand < chances[i]:
 			return items[i]

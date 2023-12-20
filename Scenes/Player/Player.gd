@@ -23,15 +23,6 @@ var enemyCollision : KinematicCollision2D = null
 func _ready():
 	set_process_input(true)
 	
-#	animation_player.animation_finished.connect(activateAnimationTree)
-	
-#func activateAnimationTree(animationName):
-#	print(animationName)
-#	if animationName in ["flip_right", "flip_left"]:
-#		animation_tree.active = true
-#
-##		rig.scale.x *= -1
-##		rig.position.x *= -1
 func _physics_process(_delta):
 	move_and_slide()
 	
@@ -43,22 +34,6 @@ func move(_delta):
 	else:
 		velocity = Vector2.ZERO
 		
-	processSide()
-	
-		
-	
-func processSide():
-	if velocity.x > 0 && !lookingRight:
-		lookingRight = true
-		animation_tree.set("parameters/StateMachine/conditions/lookright", true)
-		animation_tree.set("parameters/StateMachine/conditions/lookleft", false)
-		
-	if velocity.x < 0 && lookingRight:
-		
-		animation_tree.set("parameters/StateMachine/conditions/lookright", false)
-		animation_tree.set("parameters/StateMachine/conditions/lookleft", true)
-		
-		lookingRight = false
 		
 func processDrop(drop: Drop):
 	match drop.res.type:
@@ -72,11 +47,7 @@ func processDrop(drop: Drop):
 			if 	healthComponent :
 				var newHealth = healthComponent.health + healQuantity
 				
-				print(healthComponent.health)
-				
 				healthComponent.health = min(healthComponent.maxHealth,newHealth)
-				
-				print(healthComponent.health)
 				
 				
 				healthComponent.health_changed.emit()

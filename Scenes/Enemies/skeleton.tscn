@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6gb1ibkaaic0"]
+[gd_scene load_steps=10 format=3 uid="uid://b6gb1ibkaaic0"]
 
 [ext_resource type="PackedScene" uid="uid://dxsft1bnlaypf" path="res://Scenes/Enemy/Enemy.tscn" id="1_y55d8"]
 [ext_resource type="Resource" uid="uid://dr8ctqxjlpd52" path="res://Resources/Istances/Enemies/Skeleton/skeleton.tres" id="2_tav51"]
 [ext_resource type="Texture2D" uid="uid://tvuki2pte8n1" path="res://Textures/skeletons/skeleton-splat.png" id="3_hgbx5"]
+[ext_resource type="Script" path="res://Scenes/Player/ProcessSideComponent.gd" id="4_7j2pd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5its"]
 size = Vector2(17.6, 43.6667)
@@ -1016,12 +1017,10 @@ rest = Transform2D(1, 0, 0, 1, -19.8639, 126.688)
 [node name="leftleg" type="Bone2D" parent="Rig/Skeleton2D/hip" index="2"]
 position = Vector2(40.0143, 13.2903)
 rotation = -0.602771
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 40.0143, 13.2903)
 
 [node name="leftcalf" type="Bone2D" parent="Rig/Skeleton2D/hip/leftleg" index="0"]
 position = Vector2(20.1361, 126.645)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 20.1361, 126.645)
 
 [node name="leftfoot" type="Bone2D" parent="Rig/Skeleton2D/hip/leftleg/leftcalf" index="0"]
@@ -1032,3 +1031,7 @@ rest = Transform2D(1, 0, 0, 1, -6.53054, 126.674)
 libraries = {
 "": SubResource("AnimationLibrary_huwhq")
 }
+
+[node name="ProcessSideComponent" type="Node2D" parent="." index="9" node_paths=PackedStringArray("character2d")]
+script = ExtResource("4_7j2pd")
+character2d = NodePath("..")
